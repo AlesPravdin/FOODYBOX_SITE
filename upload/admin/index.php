@@ -117,15 +117,23 @@ $registry->set('ocstore', new ocStore($registry));
 
 $query = $db->query("SELECT * FROM `" . DB_PREFIX . "language`"); 
 
+$lres = NULL;
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
+	$lres=$result;
 }
 
 $config->set('config_language_id', $languages[$config->get('config_admin_language')]['language_id']);
+//$config->set('config_language_id', $lres['language_id']);
 
 // Language	
 $language = new Language($languages[$config->get('config_admin_language')]['directory']);
+//$language = new Language($lres['directory']);
+
 $language->load($languages[$config->get('config_admin_language')]['filename']);	
+//$language->load($lres['filename']);	
+
+
 $registry->set('language', $language);
 
 // Document
