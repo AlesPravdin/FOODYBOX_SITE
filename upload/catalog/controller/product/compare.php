@@ -67,7 +67,8 @@ class ControllerProductCompare extends Controller {
 		}
 		
 		$this->data['review_status'] = $this->config->get('config_review_status');
-		
+	
+								
 		$this->data['products'] = array();
 		
 		$this->data['attribute_groups'] = array();

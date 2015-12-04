@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION', '1.5.5.1');
+define('VERSION', '1.5.5.1.2');
 
 // Configuration
 if (file_exists('config.php')) {
@@ -24,6 +24,7 @@ require_once(DIR_SYSTEM . 'library/tax.php');
 require_once(DIR_SYSTEM . 'library/weight.php');
 require_once(DIR_SYSTEM . 'library/length.php');
 require_once(DIR_SYSTEM . 'library/cart.php');
+require_once(DIR_SYSTEM . 'library/ocstore.php');
 
 // Registry
 $registry = new Registry();
@@ -133,7 +134,7 @@ $registry->set('session', $session);
 // Language Detection
 $languages = array();
 
-$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'"); 
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'");
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
@@ -211,18 +212,24 @@ $registry->set('length', new Length($registry));
 // Cart
 $registry->set('cart', new Cart($registry));
 
-// Encryption
+// ocStore features
+$registry->set('ocstore', new ocStore($registry));
+//  Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 		
 // Front Controller 
 $controller = new Front($registry);
 
-// SEO URL's
-$controller->addPreAction(new Action('common/seo_url'));	
-
 // Maintenance Mode
 $controller->addPreAction(new Action('common/maintenance'));
+
+// SEO URL's
+if (!$seo_type = $config->get('config_seo_url_type')) {
+	$seo_type = 'seo_url';
+}
+$controller->addPreAction(new Action('common/' . $seo_type));	
 	
+
 // Router
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);

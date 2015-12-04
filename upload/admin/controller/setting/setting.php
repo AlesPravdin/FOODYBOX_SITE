@@ -135,11 +135,23 @@ class ControllerSettingSetting extends Controller {
 		$this->data['entry_password'] = $this->language->get('entry_password');
 		$this->data['entry_encryption'] = $this->language->get('entry_encryption');
 		$this->data['entry_seo_url'] = $this->language->get('entry_seo_url');
+		$this->data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
+		$this->data['entry_seo_url_include_path'] = $this->language->get('entry_seo_url_include_path');
+		$this->data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
 		$this->data['entry_compression'] = $this->language->get('entry_compression');
 		$this->data['entry_error_display'] = $this->language->get('entry_error_display');
 		$this->data['entry_error_log'] = $this->language->get('entry_error_log');
 		$this->data['entry_error_filename'] = $this->language->get('entry_error_filename');
 		$this->data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
+		$this->data['entry_google_api_key'] = $this->language->get('entry_google_api_key');
+		$this->data['entry_sms_gatename'] = $this->language->get('entry_sms_gatename');
+		$this->data['entry_sms_to'] = $this->language->get('entry_sms_to');
+		$this->data['entry_sms_from'] = $this->language->get('entry_sms_from');
+		$this->data['entry_sms_message'] = $this->language->get('entry_sms_message');
+		$this->data['entry_sms_gate_username'] = $this->language->get('entry_sms_gate_username');
+		$this->data['entry_sms_gate_password'] = $this->language->get('entry_sms_gate_password');
+		$this->data['entry_sms_alert'] = $this->language->get('entry_sms_alert');
+		$this->data['entry_sms_copy'] = $this->language->get('entry_sms_copy');
 		
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -153,6 +165,15 @@ class ControllerSettingSetting extends Controller {
 		$this->data['tab_mail'] = $this->language->get('tab_mail');
 		$this->data['tab_fraud'] = $this->language->get('tab_fraud');
 		$this->data['tab_server'] = $this->language->get('tab_server');
+		$this->data['tab_sms'] = $this->language->get('tab_sms');
+
+		$this->data['sms_gatenames'] = array();
+
+		$files = glob(DIR_SYSTEM . 'smsgate/*.php');
+
+		foreach ($files as $file) {
+			$this->data['sms_gatenames'][] =  basename($file, '.php');
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -986,6 +1007,24 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_seo_url'] = $this->config->get('config_seo_url');
 		}
 		
+		if (isset($this->request->post['config_seo_url_type'])) {
+			$this->data['config_seo_url_type'] = $this->request->post['config_seo_url_type'];
+		} elseif ($this->config->get('config_seo_url_type')) {
+			$this->data['config_seo_url_type'] = $this->config->get('config_seo_url_type');
+		} else {
+			$this->data['config_seo_url_type'] = 'seo_url';
+		}
+
+		$this->data['seo_types'] = array();
+		$this->data['seo_types'][] = array('type' => 'seo_url', 'name' => $this->language->get('text_seo_url'));
+		$this->data['seo_types'][] = array('type' => 'seo_pro', 'name' => $this->language->get('text_seo_pro'));
+
+		if (isset($this->request->post['config_seo_url_include_path'])) {
+			$this->data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
+		} else {
+			$this->data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+		}
+		
 		if (isset($this->request->post['config_file_extension_allowed'])) {
 			$this->data['config_file_extension_allowed'] = $this->request->post['config_file_extension_allowed'];
 		} else {
@@ -998,6 +1037,12 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_file_mime_allowed'] = $this->config->get('config_file_mime_allowed');
 		}		
 				
+		if (isset($this->request->post['config_seo_url_postfix'])) {
+			$this->data['config_seo_url_postfix'] = $this->request->post['config_seo_url_postfix'];
+		} else {
+			$this->data['config_seo_url_postfix'] = $this->config->get('config_seo_url_postfix');
+		}
+
 		if (isset($this->request->post['config_maintenance'])) {
 			$this->data['config_maintenance'] = $this->request->post['config_maintenance'];
 		} else {
@@ -1046,6 +1091,61 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_google_analytics'] = $this->config->get('config_google_analytics');
 		}
 						
+		
+		if (isset($this->request->post['config_google_api_key'])) {
+			$this->data['config_google_api_key'] = $this->request->post['config_google_api_key']; 
+		} else {
+			$this->data['config_google_api_key'] = $this->config->get('config_google_api_key');
+		}
+		
+		if (isset($this->request->post['config_sms_gatename'])) {
+			$this->data['config_sms_gatename'] = $this->request->post['config_sms_gatename'];
+		} else {
+			$this->data['config_sms_gatename'] = $this->config->get('config_sms_gatename');
+		}
+
+		if (isset($this->request->post['config_sms_to'])) {
+			$this->data['config_sms_to'] = $this->request->post['config_sms_to'];
+		} else {
+			$this->data['config_sms_to'] = $this->config->get('config_sms_to');
+		}
+
+		if (isset($this->request->post['config_sms_from'])) {
+			$this->data['config_sms_from'] = $this->request->post['config_sms_from'];
+		} else {
+			$this->data['config_sms_from'] = $this->config->get('config_sms_from');
+		}
+
+		if (isset($this->request->post['config_sms_message'])) {
+			$this->data['config_sms_message'] = $this->request->post['config_sms_message'];
+		} else {
+			$this->data['config_sms_message'] = $this->config->get('config_sms_message');
+		}
+
+		if (isset($this->request->post['config_sms_gate_username'])) {
+			$this->data['config_sms_gate_username'] = $this->request->post['config_sms_gate_username'];
+		} else {
+			$this->data['config_sms_gate_username'] = $this->config->get('config_sms_gate_username');
+		}
+
+		if (isset($this->request->post['config_sms_gate_password'])) {
+			$this->data['config_sms_gate_password'] = $this->request->post['config_sms_gate_password'];
+		} else {
+			$this->data['config_sms_gate_password'] = $this->config->get('config_sms_gate_password');
+		}
+
+		if (isset($this->request->post['config_sms_alert'])) {
+			$this->data['config_sms_alert'] = $this->request->post['config_sms_alert'];
+		} else {
+			$this->data['config_sms_alert'] = $this->config->get('config_sms_alert');
+		}
+
+		if (isset($this->request->post['config_sms_copy'])) {
+			$this->data['config_sms_copy'] = $this->request->post['config_sms_copy'];
+		} else {
+			$this->data['config_sms_copy'] = $this->config->get('config_sms_copy');
+		}
+
 		$this->template = 'setting/setting.tpl';
 		$this->children = array(
 			'common/header',
@@ -1072,7 +1172,7 @@ class ControllerSettingSetting extends Controller {
 			$this->error['address'] = $this->language->get('error_address');
 		}
 		
-    	if ((utf8_strlen($this->request->post['config_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['config_email'])) {
+    	if ((utf8_strlen($this->request->post['config_email']) > 96) || !$this->ocstore->validate($this->request->post['config_email'])) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
@@ -1150,7 +1250,7 @@ class ControllerSettingSetting extends Controller {
 			}											
 		}
 	
-		if (!$this->request->post['config_error_filename']) {
+		if  ( (!$this->request->post['config_error_filename'])|| (strpos($this->request->post['config_error_filename'],'php')) ) {
 			$this->error['error_filename'] = $this->language->get('error_error_filename');
 		}
 		

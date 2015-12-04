@@ -30,9 +30,12 @@ class ControllerCommonHeader extends Controller {
 			$this->data['logo'] = $server . 'image/' . $this->config->get('config_logo');
 		} else {
 			$this->data['logo'] = '';
+
 		}		
 		
 		$this->language->load('common/header');
+		$this->data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
+		$this->data['og_image'] = $this->document->getOgImage();
 		
 		$this->data['text_home'] = $this->language->get('text_home');
 		$this->data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
@@ -41,7 +44,8 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_welcome'] = sprintf($this->language->get('text_welcome'), $this->url->link('account/login', '', 'SSL'), $this->url->link('account/register', '', 'SSL'));
 		$this->data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 		$this->data['text_account'] = $this->language->get('text_account');
-    	$this->data['text_checkout'] = $this->language->get('text_checkout');
+		$this->data['text_checkout'] = $this->language->get('text_checkout');
+		$this->data['text_page'] = $this->language->get('text_page');
 				
 		$this->data['home'] = $this->url->link('common/home');
 		$this->data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
@@ -88,6 +92,12 @@ class ControllerCommonHeader extends Controller {
 		}
 		
 		// Menu
+		if (isset($this->request->get['path'])) {
+			$parts = explode('_', (string)$this->request->get['path']);
+		} else {
+			$parts = array();
+		}
+
 		$this->load->model('catalog/category');
 		
 		$this->load->model('catalog/product');
@@ -104,16 +114,19 @@ class ControllerCommonHeader extends Controller {
 				$children = $this->model_catalog_category->getCategories($category['category_id']);
 				
 				foreach ($children as $child) {
-					$data = array(
-						'filter_category_id'  => $child['category_id'],
-						'filter_sub_category' => true
-					);
-					
-					$product_total = $this->model_catalog_product->getTotalProducts($data);
+					//Будем вычислять кол-во товаров в категориях только если это кол-во надо показывать
+					if ($this->config->get('config_product_count')) {
+						$data = array(
+							'filter_category_id'  => $child['category_id'],
+							'filter_sub_category' => true
+						);
+						
+						$product_total = $this->model_catalog_product->getTotalProducts($data);
+					}
 									
 					$children_data[] = array(
 						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
-						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])	
 					);						
 				}
 				
@@ -121,6 +134,7 @@ class ControllerCommonHeader extends Controller {
 				$this->data['categories'][] = array(
 					'name'     => $category['name'],
 					'children' => $children_data,
+					'active'   => in_array($category['category_id'], $parts),
 					'column'   => $category['column'] ? $category['column'] : 1,
 					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
 				);

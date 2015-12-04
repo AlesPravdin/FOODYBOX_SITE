@@ -2,14 +2,23 @@
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta charset="UTF-8" />
-<title><?php echo $title; ?></title>
+<title><?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
-<meta name="description" content="<?php echo $description; ?>" />
+<meta name="description" content="<?php echo $description; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
 <?php } ?>
 <?php if ($keywords) { ?>
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
+<meta property="og:title" content="<?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo $og_url; ?>" />
+<?php if ($og_image) { ?>
+<meta property="og:image" content="<?php echo $og_image; ?>" />
+<?php } else { ?>
+<meta property="og:image" content="<?php echo $logo; ?>" />
+<?php } ?>
+<meta property="og:site_name" content="<?php echo $name; ?>" />
 <?php if ($icon) { ?>
 <link href="<?php echo $icon; ?>" rel="icon" />
 <?php } ?>
@@ -51,8 +60,16 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 <body>
 <div id="container">
 <div id="header">
+<div id="top">
+</div>
   <?php if ($logo) { ?>
-  <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
+  <div id="logo">
+  <?php if ($home == $og_url) { ?>
+  <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
+  <?php } else { ?>
+  <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
+  <?php } ?>
+  </div>
   <?php } ?>
   <?php echo $language; ?>
   <?php echo $currency; ?>
@@ -68,13 +85,18 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
     <?php echo $text_logged; ?>
     <?php } ?>
   </div>
-  <div class="links"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a><a href="<?php echo $wishlist; ?>" id="wishlist-total"><?php echo $text_wishlist; ?></a><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a><a href="<?php echo $shopping_cart; ?>"><?php echo $text_shopping_cart; ?></a><a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></div>
+  <div class="links"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a><a href="<?php echo $wishlist; ?>" id="wishlist-total"><?php echo $text_wishlist; ?></a><a href="<?php echo $shopping_cart; ?>"><?php echo $text_shopping_cart; ?></a><a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></div>
 </div>
 <?php if ($categories) { ?>
 <div id="menu">
   <ul>
     <?php foreach ($categories as $category) { ?>
-    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+    <li><?php if ($category['active']) { ?>
+	<a href="<?php echo $category['href']; ?>" class="active"><?php echo $category['name']; ?></a>
+	<?php } else { ?>
+	<a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+	<?php } ?>
+	
       <?php if ($category['children']) { ?>
       <div>
         <?php for ($i = 0; $i < count($category['children']);) { ?>

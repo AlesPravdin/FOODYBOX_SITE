@@ -27,18 +27,27 @@
             <table class="form">
               <tr>
                 <td><span class="required">*</span> <?php echo $entry_name; ?></td>
-                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][name]" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['name'] : ''; ?>" />
+                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][name]" maxlength="255" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['name'] : ''; ?>" />
                   <?php if (isset($error_name[$language['language_id']])) { ?>
                   <span class="error"><?php echo $error_name[$language['language_id']]; ?></span>
                   <?php } ?></td>
               </tr>
               <tr>
-                <td><?php echo $entry_meta_description; ?></td>
-                <td><textarea name="category_description[<?php echo $language['language_id']; ?>][meta_description]" cols="40" rows="5"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['meta_description'] : ''; ?></textarea></td>
+
+                <td><?php echo $entry_seo_h1; ?></td>
+                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][seo_h1]" maxlength="255" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['seo_h1'] : ''; ?>" /></td>
+              </tr>
+              <tr>
+                <td><?php echo $entry_seo_title; ?></td>
+                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][seo_title]" maxlength="255" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['seo_title'] : ''; ?>" /></td>
               </tr>
               <tr>
                 <td><?php echo $entry_meta_keyword; ?></td>
-                <td><textarea name="category_description[<?php echo $language['language_id']; ?>][meta_keyword]" cols="40" rows="5"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea></td>
+                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][meta_keyword]" maxlength="255" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['meta_keyword'] : ''; ?>" /></td>
+              </tr>
+              <tr>
+                <td><?php echo $entry_meta_description; ?></td>
+                <td><textarea name="category_description[<?php echo $language['language_id']; ?>][meta_description]" cols="100" rows="2"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['meta_description'] : ''; ?></textarea></td>
               </tr>
               <tr>
                 <td><?php echo $entry_description; ?></td>
@@ -52,8 +61,16 @@
           <table class="form">
             <tr>
               <td><?php echo $entry_parent; ?></td>
-              <td><input type="text" name="path" value="<?php echo $path; ?>" size="100" />
-                <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>" /></td>
+              <td><select name="parent_id">
+                <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                <?php foreach ($categories as $category) { ?>
+                <?php if ($category['category_id'] == $parent_id) { ?>
+                <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select></td>
             </tr>
             <tr>
               <td><?php echo $entry_filter; ?></td>

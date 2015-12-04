@@ -48,7 +48,8 @@ class ControllerCheckoutManual extends Controller {
 				// Customer Group
 				$this->config->set('config_customer_group_id', $this->request->post['customer_group_id']);
 			}
-	
+
+				
 			// Product
 			$this->load->model('catalog/product');
 			
@@ -109,8 +110,10 @@ class ControllerCheckoutManual extends Controller {
 			// Stock
 			if (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
 				$json['error']['product']['stock'] = $this->language->get('error_stock');
-			}		
-			
+
+
+			}
+		
 			// Tax
 			if ($this->cart->hasShipping()) {
 				$this->tax->setShippingAddress($this->request->post['shipping_country_id'], $this->request->post['shipping_zone_id']);
@@ -120,7 +123,8 @@ class ControllerCheckoutManual extends Controller {
 			
 			$this->tax->setPaymentAddress($this->request->post['payment_country_id'], $this->request->post['payment_zone_id']);				
 			$this->tax->setStoreAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));	
-						
+
+			
 			// Products
 			$json['order_product'] = array();
 			
@@ -176,7 +180,8 @@ class ControllerCheckoutManual extends Controller {
 					'reward'     => $product['reward']				
 				);
 			}
-			
+
+
 			// Voucher
 			$this->session->data['vouchers'] = array();
 			
@@ -203,7 +208,7 @@ class ControllerCheckoutManual extends Controller {
 					$json['error']['vouchers']['from_name'] = $this->language->get('error_from_name');
 				}  
 			
-				if ((utf8_strlen($this->request->post['from_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['from_email'])) {
+				if ((utf8_strlen($this->request->post['from_email']) > 96) || !$this->ocstore->validate($this->request->post['from_email'])) {
 					$json['error']['vouchers']['from_email'] = $this->language->get('error_email');
 				}
 			
@@ -211,7 +216,7 @@ class ControllerCheckoutManual extends Controller {
 					$json['error']['vouchers']['to_name'] = $this->language->get('error_to_name');
 				}       
 			
-				if ((utf8_strlen($this->request->post['to_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['to_email'])) {
+				if ((utf8_strlen($this->request->post['to_email']) > 96) || !$this->ocstore->validate($this->request->post['to_email'])) {
 					$json['error']['vouchers']['to_email'] = $this->language->get('error_email');
 				}
 			

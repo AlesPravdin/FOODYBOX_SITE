@@ -110,7 +110,7 @@ class ControllerLocalisationReturnAction extends Controller {
     	$this->getList();
   	}
     
-  	protected function getList() {
+  	private function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -258,7 +258,7 @@ class ControllerLocalisationReturnAction extends Controller {
 		$this->response->setOutput($this->render());
   	}
   
-  	protected function getForm() {
+  	private function getForm() {
      	$this->data['heading_title'] = $this->language->get('heading_title');
 
     	$this->data['entry_name'] = $this->language->get('entry_name');
@@ -335,7 +335,7 @@ class ControllerLocalisationReturnAction extends Controller {
 		$this->response->setOutput($this->render());	
   	}
   	
-	protected function validateForm() {
+	private function validateForm() {
     	if (!$this->user->hasPermission('modify', 'localisation/return_action')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}
@@ -353,7 +353,7 @@ class ControllerLocalisationReturnAction extends Controller {
 		}
   	}
 
-  	protected function validateDelete() {
+  	private function validateDelete() {
 		if (!$this->user->hasPermission('modify', 'localisation/return_action')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}

@@ -17,7 +17,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-store"><?php echo $tab_store; ?></a><a href="#tab-local"><?php echo $tab_local; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-ftp"><?php echo $tab_ftp; ?></a><a href="#tab-mail"><?php echo $tab_mail; ?></a><a href="#tab-fraud"><?php echo $tab_fraud; ?></a><a href="#tab-server"><?php echo $tab_server; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-store"><?php echo $tab_store; ?></a><a href="#tab-local"><?php echo $tab_local; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-ftp"><?php echo $tab_ftp; ?></a><a href="#tab-mail"><?php echo $tab_mail; ?></a><a href="#tab-fraud"><?php echo $tab_fraud; ?></a><a href="#tab-server"><?php echo $tab_server; ?></a><a href="#tab-sms"><?php echo $tab_sms; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <table class="form">
@@ -262,6 +262,8 @@
                 <?php echo $text_no; ?>
                 <?php } ?></td>
             </tr>          
+
+
           </table>
           <h2><?php echo $text_voucher; ?></h2>
           <table class="form">
@@ -701,7 +703,7 @@
             </tr>
           </table>
         </div>
-        <div id="tab-ftp">
+       <div id="tab-ftp">
           <table class="form">
             <tr>
               <td><?php echo $entry_ftp_host; ?></td>
@@ -841,11 +843,15 @@
                 <input type="radio" name="config_fraud_detection" value="0" checked="checked" />
                 <?php echo $text_no; ?>
                 <?php } ?></td>
-            </tr>
+
+
+            </tr>          
             <tr>
               <td><?php echo $entry_fraud_key; ?></td>
               <td><input type="text" name="config_fraud_key" value="<?php echo $config_fraud_key; ?>" /></td>
-            </tr>
+
+
+            </tr>                 
             <tr>
               <td><?php echo $entry_fraud_score; ?></td>
               <td><input type="text" name="config_fraud_score" value="<?php echo $config_fraud_score; ?>" /></td>
@@ -861,7 +867,8 @@
                   <?php } ?>
                   <?php } ?>
                 </select></td>
-            </tr>
+
+            </tr>            
           </table>
         </div>
         <div id="tab-server">
@@ -913,13 +920,45 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_file_extension_allowed; ?></td>
-              <td><textarea name="config_file_extension_allowed" cols="40" rows="5"><?php echo $config_file_extension_allowed; ?></textarea></td>
+              <td><?php echo $entry_seo_url_type; ?></td>
+
+
+              <td><select name="config_seo_url_type">
+                <?php foreach ($seo_types as $seo_type) { ?>
+                <?php if ($seo_type['type'] == $config_seo_url_type) { ?>
+                <option value="<?php echo $seo_type['type']; ?>" selected="selected"><?php echo $seo_type['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $seo_type['type']; ?>"><?php echo $seo_type['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_seo_url_include_path; ?></td>
+              <td><?php if ($config_seo_url_include_path) { ?>
+                <input type="radio" name="config_seo_url_include_path" value="1" checked="checked" />
+                <?php echo $text_yes; ?>
+                <input type="radio" name="config_seo_url_include_path" value="0" />
+                <?php echo $text_no; ?>
+                <?php } else { ?>
+                <input type="radio" name="config_seo_url_include_path" value="1" />
+                <?php echo $text_yes; ?>
+                <input type="radio" name="config_seo_url_include_path" value="0" checked="checked" />
+                <?php echo $text_no; ?>
+                <?php } ?></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_seo_url_postfix; ?></td>
+              <td><input type="text" name="config_seo_url_postfix" value="<?php echo $config_seo_url_postfix; ?>" size="3" /></td>
+            </tr>
+             <td><?php echo $entry_file_extension_allowed; ?></td>
+              <td><textarea name="config_file_extension_allowed" cols="40" rows="5"><?php echo $config_file_extension_allowed; ?></textarea></td>
             <tr>
               <td><?php echo $entry_file_mime_allowed; ?></td>
               <td><textarea name="config_file_mime_allowed" cols="60" rows="5"><?php echo $config_file_mime_allowed; ?></textarea></td>
-            </tr>              
+
+
+            </tr>  
             <tr>
               <td><?php echo $entry_maintenance; ?></td>
               <td><?php if ($config_maintenance) { ?>
@@ -998,6 +1037,69 @@
               <td><?php echo $entry_google_analytics; ?></td>
               <td><textarea name="config_google_analytics" cols="40" rows="5"><?php echo $config_google_analytics; ?></textarea></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_google_api_key; ?></td>
+              <td><input type="text" name="config_google_api_key" value="<?php echo $config_google_api_key; ?>" size="40" /></td>
+            </tr>
+            
+            
+          </table>
+        </div>
+		<div id="tab-sms">
+          <table class="form">
+            <tr>
+              <td><?php echo $entry_sms_alert; ?></td>
+              <td><?php if ($config_sms_alert) { ?>
+                <input type="radio" name="config_sms_alert" value="1" checked="checked" />
+                <?php echo $text_yes; ?>
+                <input type="radio" name="config_sms_alert" value="0" />
+                <?php echo $text_no; ?>
+                <?php } else { ?>
+                <input type="radio" name="config_sms_alert" value="1" />
+                <?php echo $text_yes; ?>
+                <input type="radio" name="config_sms_alert" value="0" checked="checked" />
+                <?php echo $text_no; ?>
+                <?php } ?></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_sms_gatename; ?></td>
+
+              <td>
+                <select name="config_sms_gatename">
+                <?php foreach($sms_gatenames as $sms_gatename) { ?>
+                <?php if ($config_sms_gatename == $sms_gatename) { ?>
+                <option value="<?php echo $sms_gatename; ?>" selected="selected"><?php echo $sms_gatename; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $sms_gatename; ?>"><?php echo $sms_gatename; ?></option>
+                <?php } ?>
+                <?php } ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_sms_from; ?></td>
+              <td><input type="text" name="config_sms_from" value="<?php echo $config_sms_from; ?>" maxlength="15" /></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_sms_to; ?></td>
+              <td><input type="text" name="config_sms_to" value="<?php echo $config_sms_to; ?>" maxlength="15" /></td>
+            </tr>
+            <tr>
+              <td valign="top"><?php echo $entry_sms_copy; ?></td>
+              <td><textarea name="config_sms_copy" cols="40"><?php echo $config_sms_copy; ?></textarea></td>
+            </tr>
+            <tr>
+              <td valign="top"><?php echo $entry_sms_message; ?></td>
+              <td><textarea name="config_sms_message" cols="40" rows="5"><?php echo $config_sms_message; ?></textarea></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_sms_gate_username; ?></td>
+              <td><input type="text" name="config_sms_gate_username" value="<?php echo $config_sms_gate_username; ?>" /></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_sms_gate_password; ?></td>
+              <td><input type="text" name="config_sms_gate_password" value="<?php echo $config_sms_gate_password; ?>" /></td>
+            </tr>
           </table>
         </div>
       </form>
@@ -1013,7 +1115,7 @@ $('select[name=\'config_country_id\']').bind('change', function() {
 		url: 'index.php?route=setting/setting/country&token=<?php echo $token; ?>&country_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
-			$('select[name=\'country_id\']').after('<span class="wait">&nbsp;<img src="view/image/loading.gif" alt="" /></span>');
+			$('select[name=\'config_country_id\']').after('<span class="wait">&nbsp;<img src="view/image/loading.gif" alt="" /></span>');
 		},		
 		complete: function() {
 			$('.wait').remove();

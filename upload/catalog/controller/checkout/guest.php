@@ -28,6 +28,15 @@ class ControllerCheckoutGuest extends Controller {
 		
 		$this->data['button_continue'] = $this->language->get('button_continue');
 		
+		$this->data['init_geo_ip'] = false;
+		if (!isset($this->session->data['guest']['payment'])) {
+			$google_api_key = $this->config->get('config_google_api_key');
+			if ($google_api_key) {
+				$this->data['init_geo_ip'] = true;
+				$this->data['google_api_key'] = $google_api_key;
+			}
+		}
+		
 		if (isset($this->session->data['guest']['firstname'])) {
 			$this->data['firstname'] = $this->session->data['guest']['firstname'];
 		} else {
@@ -190,7 +199,7 @@ class ControllerCheckoutGuest extends Controller {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
 	
-			if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+			if ((utf8_strlen($this->request->post['email']) > 96) || !$this->ocstore->validate($this->request->post['email'])) {
 				$json['error']['email'] = $this->language->get('error_email');
 			}
 			
@@ -252,7 +261,7 @@ class ControllerCheckoutGuest extends Controller {
 			
 			if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
 				$json['error']['zone'] = $this->language->get('error_zone');
-			}	
+			}		
 		}
 			
 		if (!$json) {

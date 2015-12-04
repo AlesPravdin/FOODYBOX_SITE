@@ -31,6 +31,15 @@ class ControllerCheckoutRegister extends Controller {
 
 		$this->data['button_continue'] = $this->language->get('button_continue');
 
+		$this->data['init_geo_ip'] = false;
+		if (!isset($this->session->data['shipping_country_id']) && !isset($this->session->data['shipping_postcode']) && !isset($this->session->data['shipping_city'])) {
+			$google_api_key = $this->config->get('config_google_api_key');
+			if ($google_api_key) {
+				$this->data['init_geo_ip'] = true;
+				$this->data['google_api_key'] = $google_api_key;
+			}
+		}
+
 		$this->data['customer_groups'] = array();
 		
 		if (is_array($this->config->get('config_customer_group_display'))) {
@@ -139,7 +148,7 @@ class ControllerCheckoutRegister extends Controller {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
 		
-			if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+			if ((utf8_strlen($this->request->post['email']) > 96) || !$this->ocstore->validate($this->request->post['email'])) {
 				$json['error']['email'] = $this->language->get('error_email');
 			}
 	

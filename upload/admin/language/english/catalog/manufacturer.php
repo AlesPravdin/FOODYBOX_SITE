@@ -6,8 +6,8 @@ $_['heading_title']      = 'Manufacturer';
 $_['text_success']       = 'Success: You have modified manufacturers!';
 $_['text_default']       = 'Default';
 $_['text_image_manager'] = 'Image Manager';
-$_['text_browse']        = 'Browse';
-$_['text_clear']         = 'Clear';
+$_['text_browse']        = 'Browse Files';
+$_['text_clear']         = 'Clear Image';
 $_['text_percent']       = 'Percentage';
 $_['text_amount']        = 'Fixed Amount';
 
@@ -23,6 +23,11 @@ $_['entry_keyword']      = 'SEO Keyword:<br /><span class="help">Do not use spac
 $_['entry_image']        = 'Image:';
 $_['entry_sort_order']   = 'Sort Order:';
 $_['entry_type']         = 'Type:';
+$_['entry_meta_keyword'] = 'Meta Tag Keywords:';
+$_['entry_meta_description'] = 'Meta Tag Description:';
+$_['entry_description']  = 'Description:';
+$_['entry_seo_title']    = 'HTML Tag Title:';
+$_['entry_seo_h1']       = 'HTML Tag H1:';
 
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify manufacturers!';

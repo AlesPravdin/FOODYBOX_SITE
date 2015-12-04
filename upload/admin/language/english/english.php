@@ -34,7 +34,7 @@ $_['button_save']                   = 'Save';
 $_['button_cancel']                 = 'Cancel';
 $_['button_clear']                  = 'Clear Log';
 $_['button_close']                  = 'Close';
-$_['button_filter']                 = 'Filter';
+$_['button_clear']                 	= 'Reset';
 $_['button_send']                   = 'Send';
 $_['button_edit']                   = 'Edit';
 $_['button_copy']                   = 'Copy';
@@ -70,11 +70,13 @@ $_['button_add_link']               = 'Add Link';
 $_['button_update_total']           = 'Update Totals';
 $_['button_approve']                = 'Approve';
 $_['button_reset']                  = 'Reset';
+$_['button_filter']           		= 'Filter';
 
 // Tab
 $_['tab_address']                   = 'Address';
 $_['tab_admin']                     = 'Admin';
 $_['tab_attribute']                 = 'Attribute';
+$_['tab_coupon_history']      = 'Coupon History';
 $_['tab_customer']                  = 'Customer Details';
 $_['tab_data']                      = 'Data';
 $_['tab_design']                    = 'Design';
@@ -95,15 +97,18 @@ $_['tab_local']                     = 'Local';
 $_['tab_mail']                      = 'Mail';
 $_['tab_module']                    = 'Module';
 $_['tab_order']                     = 'Order Details';
+$_['tab_order_history']       = 'Order History';
 $_['tab_payment']                   = 'Payment Details';
 $_['tab_product']                   = 'Products';
 $_['tab_return']                    = 'Return Details';
+$_['tab_return_history']      = 'Return History';
 $_['tab_reward']                    = 'Reward Points';
 $_['tab_shipping']                  = 'Shipping Details';
 $_['tab_total']                     = 'Totals';
 $_['tab_transaction']               = 'Transactions';
 $_['tab_voucher']                   = 'Vouchers';
 $_['tab_voucher_history']           = 'Voucher History';
+$_['tab_sms']                 = 'SMS';
 
 // Error
 $_['error_upload_1']                = 'Warning: The uploaded file exceeds the upload_max_filesize directive in php.ini!';

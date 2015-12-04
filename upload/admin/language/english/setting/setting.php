@@ -14,12 +14,14 @@ $_['text_stock']                   = 'Stock';
 $_['text_affiliate']               = 'Affiliates';
 $_['text_return']                  = 'Returns';
 $_['text_image_manager']           = 'Image Manager';
-$_['text_browse']                  = 'Browse';
-$_['text_clear']                   = 'Clear';
+$_['text_browse']                = 'Browse Files';
+$_['text_clear']                 = 'Clear Image';
 $_['text_shipping']                = 'Shipping Address';
 $_['text_payment']                 = 'Payment Address';
 $_['text_mail']                    = 'Mail';
 $_['text_smtp']                    = 'SMTP';
+$_['text_seo_url']               = 'Default';
+$_['text_seo_pro']               = 'SeoPro';
 
 // Entry
 $_['entry_name']                   = 'Store Name:';
@@ -45,6 +47,7 @@ $_['entry_admin_limit']   	       = 'Default Items Per Page (Admin):<br /><span 
 $_['entry_product_count']          = 'Category Product Count:<br /><span class="help">Show the number of products inside the subcategories in the storefront header category menu. Be warned, this will cause an extreme performance hit for stores with a lot of subcategories!</span>';
 $_['entry_review']       	       = 'Allow Reviews:<br /><span class="help">Enable/Disable new review entry and display of existing reviews</span>';
 $_['entry_download']               = 'Allow Downloads:';
+$_['entry_upload_allowed']       = 'Allowed Upload File Extensions:<br /><span class="help">Add which file extensions are allowed to be uploaded. Use comma separated values.</span>';
 $_['entry_voucher_min']            = 'Voucher Min:<br /><span class="help">Minimum amount a customer can purchase a voucher for.</span>';
 $_['entry_voucher_max']            = 'Voucher Max:<br /><span class="help">Maximum amount a customer can purchase a voucher for.</span>';
 $_['entry_tax']                    = 'Display Prices With Tax:';
@@ -116,6 +119,18 @@ $_['entry_error_display']          = 'Display Errors:';
 $_['entry_error_log']              = 'Log Errors:';
 $_['entry_error_filename']         = 'Error Log Filename:';
 $_['entry_google_analytics']       = 'Google Analytics Code:<br /><span class="help">Login to your <a href="http://www.google.com/analytics/" target="_blank"><u>Google Analytics</u></a> account and after creating your web site profile copy and paste the analytics code into this field.</span>';
+$_['entry_google_api_key']     = 'Ключ Google API:<br /><span class="help">Используется для Geo IP и карт Google. <a onclick="window.open(\'https://developers.google.com/maps/documentation/javascript/tutorial?hl=ru#api_key\');"><u>Получить ключ</u></a>.</span>';
+$_['entry_sms_gatename']       = 'Сервис отправки SMS:';
+$_['entry_sms_to']             = 'Номер телефона получателя:<br/><span class="help">В международном формате, только цифры 7926xxxxxxx</span>';
+$_['entry_sms_from']           = 'Псевдоним отправителя:<br/><span class="help">Не более 11 символов, либо номер телефона до 15 цифр</span>';
+$_['entry_sms_message']        = 'Текст сообщения:<br/><span class="help">Можно использовать теги:<br/>{ID} - номер заказа<br/>{DATE} - дата заказа<br/>{TIME} - время заказа<br/>{SUM} - сумма заказа<br/>{PHONE} - телефон клиента</span>';
+$_['entry_sms_gate_username']  = 'Логин на SMS шлюз:';
+$_['entry_sms_gate_password']  = 'Пароль на SMS шлюз:';
+$_['entry_sms_alert']          = 'Включить SMS уведомления:';
+$_['entry_sms_copy']           = 'Дополнительные номера:<br/><span class="help">Указывать через запятую, в международном формате, без разделителей 7926xxxxxxx</span>';
+$_['entry_seo_url_type']       = 'Тип ЧПУ:';
+$_['entry_seo_url_include_path'] = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
+$_['entry_seo_url_postfix']    = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
 
 // Error
 $_['error_warning']                = 'Warning: Please check the form carefully for errors!';

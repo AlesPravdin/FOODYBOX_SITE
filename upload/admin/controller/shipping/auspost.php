@@ -138,6 +138,7 @@ class ControllerShippingAusPost extends Controller {
 		} else {
 			$this->data['auspost_sort_order'] = $this->config->get('auspost_sort_order');
 		}                               
+
 		
 		$this->template = 'shipping/auspost.tpl';
 		$this->children = array(

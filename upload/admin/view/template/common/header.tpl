@@ -190,11 +190,16 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
+      <li id="octeam"><a class="top"><?php echo $text_octeam; ?></a>
+        <ul>
+          <li><a href="<?php echo $octeam_toolset; ?>"><?php echo $text_octeam_toolset; ?></a></li>
+        </ul>
+      </li>
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
         <ul>
-          <li><a href="http://www.opencart.com" target="_blank"><?php echo $text_opencart; ?></a></li>
-          <li><a href="http://www.opencart.com/index.php?route=documentation/introduction" target="_blank"><?php echo $text_documentation; ?></a></li>
-          <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
+          <li><a onClick="window.open('http://myopencart.ru');"><?php echo $text_opencart; ?></a></li>
+          <li><a onClick="window.open('http://wiki.myopencart.ru');"><?php echo $text_documentation; ?></a></li>
+          <li><a onClick="window.open('http://opencartforum.ru');"><?php echo $text_support; ?></a></li>
         </ul>
       </li>
     </ul>

@@ -1,5 +1,5 @@
 
-<div id="footer"><a href="http://www.opencart.com" target="_blank">Project Homepage</a>|<a href="http://www.opencart.com/index.php?route=documentation/introduction" target="_blank">Documentation</a>|<a href="http://forum.opencart.com" target="_blank">Support Forums</a><br />
-  Copyright © 2012 OpenCart - All rights reserved</div>
+<div id="footer"><a onclick="window.open('http://www.myopencart.ru');">Русское сообщество OpenCart и ocStore</a>|<a onclick="window.open('http://wiki.myopencart.ru/');">Документация</a>|<a onclick="window.open('http://forum.myopencart.ru');">Форум поддержки</a><br />
+  Copyright © 2013 ocStore - Все права защищены</div>
 </div>
 </body></html>

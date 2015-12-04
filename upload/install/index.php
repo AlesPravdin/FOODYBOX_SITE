@@ -1,5 +1,5 @@
 <?php
-// Error Reporting
+ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // HTTP
@@ -15,8 +15,10 @@ define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/template/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
 
+
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
+require_once(DIR_SYSTEM . 'library/ocstore.php');
 
 // Registry
 $registry = new Registry();
@@ -28,7 +30,6 @@ $registry->set('load', $loader);
 // Url
 $url = new Url(HTTP_SERVER);
 $registry->set('url', $url);
-
 // Request
 $request = new Request();
 $registry->set('request', $request);
@@ -42,6 +43,8 @@ $registry->set('response', $response);
 $document = new Document();
 $registry->set('document', $document);
 
+// ocStore features
+$registry->set('ocstore', new ocStore($registry));
 // Upgrade
 $upgrade = false;
 

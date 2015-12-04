@@ -20,6 +20,18 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			//++++ Don't escape html tags in shipping methods ++++
+			if (isset($this->request->post['shipping_method'])) {
+				$this->request->post['shipping_method'] = html_entity_decode($this->request->post['shipping_method'], ENT_QUOTES, 'UTF-8');
+			}
+			if (isset($this->request->post['order_total'])) {
+	      		foreach ($this->request->post['order_total'] as $i=>$order_total) {
+					$this->request->post['order_total'][$i]['title'] = html_entity_decode($order_total['title'], ENT_QUOTES, 'UTF-8');
+					$this->request->post['order_total'][$i]['text'] = html_entity_decode($order_total['text'], ENT_QUOTES, 'UTF-8');
+				}
+			}
+			//---- Don't escape html tags in shipping methods ----
+			
       	  	$this->model_sale_order->addOrder($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -76,6 +88,18 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
     	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			//++++ Don't escape html tags in shipping methods ++++
+			if (isset($this->request->post['shipping_method'])) {
+				$this->request->post['shipping_method'] = html_entity_decode($this->request->post['shipping_method'], ENT_QUOTES, 'UTF-8');
+			}
+			if (isset($this->request->post['order_total'])) {
+	      		foreach ($this->request->post['order_total'] as $i=>$order_total) {
+					$this->request->post['order_total'][$i]['title'] = html_entity_decode($order_total['title'], ENT_QUOTES, 'UTF-8');
+					$this->request->post['order_total'][$i]['text'] = html_entity_decode($order_total['text'], ENT_QUOTES, 'UTF-8');
+				}
+			}
+			//---- Don't escape html tags in shipping methods ----
+
 			$this->model_sale_order->editOrder($this->request->get['order_id'], $this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -487,7 +511,8 @@ class ControllerSaleOrder extends Controller {
 				
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');  
+
+		$this->data['text_no_results'] = $this->language->get('text_no_results');
 		$this->data['text_default'] = $this->language->get('text_default');
 		$this->data['text_select'] = $this->language->get('text_select');
 		$this->data['text_none'] = $this->language->get('text_none');
@@ -882,6 +907,7 @@ class ControllerSaleOrder extends Controller {
       		$this->data['comment'] = '';
     	}	
 				
+
 		$this->load->model('sale/customer');
 
 		if (isset($this->request->post['customer_id'])) {
@@ -1119,6 +1145,7 @@ class ControllerSaleOrder extends Controller {
 				$order_download = array();
 			}
 							
+
 			$this->data['order_products'][] = array(
 				'order_product_id' => $order_product['order_product_id'],
 				'product_id'       => $order_product['product_id'],
@@ -1176,7 +1203,7 @@ class ControllerSaleOrder extends Controller {
       		$this->error['lastname'] = $this->language->get('error_lastname');
     	}
 
-    	if ((utf8_strlen($this->request->post['email']) > 96) || (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email']))) {
+    	if ((utf8_strlen($this->request->post['email']) > 96) || (!$this->ocstore->validate($this->request->post['email']))) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 		
@@ -2311,6 +2338,7 @@ class ControllerSaleOrder extends Controller {
 				}
 								
 				if (!in_array($this->request->files['file']['type'], $allowed)) {
+
 					$json['error'] = $this->language->get('error_filetype');
 				}
 							

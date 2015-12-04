@@ -221,7 +221,12 @@ class ControllerProductProduct extends Controller {
 				'separator' => $this->language->get('text_separator')
 			);			
 			
-			$this->document->setTitle($product_info['name']);
+			if ($product_info['seo_title']) {
+				$this->document->setTitle($product_info['seo_title']);
+			} else {
+			    $this->document->setTitle($product_info['name']);
+			}
+
 			$this->document->setDescription($product_info['meta_description']);
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
@@ -229,8 +234,12 @@ class ControllerProductProduct extends Controller {
 			$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 			$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
 			
-			$this->data['heading_title'] = $product_info['name'];
-			
+			if ($product_info['seo_h1']) {
+				$this->data['heading_title'] = $product_info['seo_h1'];
+			} else {
+			    $this->data['heading_title'] = $product_info['name'];
+			}
+
 			$this->data['text_select'] = $this->language->get('text_select');
 			$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$this->data['text_model'] = $this->language->get('text_model');
@@ -291,13 +300,14 @@ class ControllerProductProduct extends Controller {
 			if ($product_info['image']) {
 				$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 			} else {
-				$this->data['popup'] = '';
+				$this->data['popup'] = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 			}
 			
 			if ($product_info['image']) {
 				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+				$this->document->setOgImage($this->data['thumb']);
 			} else {
-				$this->data['thumb'] = '';
+				$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
 			}
 			
 			$this->data['images'] = array();

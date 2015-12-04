@@ -22,7 +22,7 @@
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
-      <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+      <li><a href="<?php echo $category['href']; ?>"><img src="<?php echo $category['thumb']; ?>"><span><?php echo $category['name']; ?></a></span></li>
       <?php } ?>
     </ul>
     <?php } else { ?>
@@ -31,7 +31,7 @@
       <?php $j = $i + ceil(count($categories) / 4); ?>
       <?php for (; $i < $j; $i++) { ?>
       <?php if (isset($categories[$i])) { ?>
-      <li><a href="<?php echo $categories[$i]['href']; ?>"><?php echo $categories[$i]['name']; ?></a></li>
+      <li><a href="<?php echo $categories[$i]['href']; ?>"><img src="<?php echo $categories[$i]['thumb']; ?>"><span><?php echo $categories[$i]['name']; ?></span></a></li>
       <?php } ?>
       <?php } ?>
     </ul>
@@ -53,6 +53,7 @@
         <?php } ?>
       </select>
     </div>
+	<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
     <div class="sort"><b><?php echo $text_sort; ?></b>
       <select onchange="location = this.value;">
         <?php foreach ($sorts as $sorts) { ?>
@@ -65,7 +66,6 @@
       </select>
     </div>
   </div>
-  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
   <div class="product-list">
     <?php foreach ($products as $product) { ?>
     <div>

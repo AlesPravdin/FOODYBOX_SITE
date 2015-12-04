@@ -320,10 +320,12 @@ a.button, .list a.button {
 .list tbody td {
 	vertical-align: middle;
 	padding: 0px 5px;
-	background: #FFFFFF;
 }
 .list tbody tr:hover td {
 	background-color: #FFFFCB;
+}
+.list tbody tr:nth-child(2n) {
+        background-color: #F4F4F8;
 }
 .list .left {
 	text-align: left;
@@ -405,7 +407,7 @@ table.form > tbody > tr > td {
 	cursor: pointer;
 }
 .htabs {
-	padding: 0px 0px 0px 10px;
+	padding: 0px 0px 0px 1px;
 	height: 30px;
 	line-height: 16px;
 	border-bottom: 1px solid #DDDDDD;

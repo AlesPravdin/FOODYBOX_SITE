@@ -46,12 +46,19 @@ class ModelToolImage extends Model {
 				copy(DIR_IMAGE . $old_image, DIR_IMAGE . $new_image);
 			}
 		}
+
+		return $this->getImageUrl($new_image);
 		
+	}
+
+	protected function getImageUrl($new_image) {
+		$parts = explode('/', $new_image);
+		$new_url = implode('/', array_map('rawurlencode', $parts));
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			return $this->config->get('config_ssl') . 'image/' . $new_image;
-		} else {
-			return $this->config->get('config_url') . 'image/' . $new_image;
-		}	
+			return $this->config->get('config_ssl') . 'image/' . $new_url;
+		}
+		else {
+			return $this->config->get('config_url') . 'image/' . $new_url;
+		}
 	}
 }
-?>

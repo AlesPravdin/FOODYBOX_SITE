@@ -8,12 +8,13 @@ $_['text_plus']              = '+';
 $_['text_minus']             = '-';
 $_['text_default']           = 'Default';
 $_['text_image_manager']     = 'Image Manager';
-$_['text_browse']            = 'Browse';
-$_['text_clear']             = 'Clear';
+$_['text_browse']            = 'Browse Files';
+$_['text_clear']             = 'Clear Image';
 $_['text_option']            = 'Option';
 $_['text_option_value']      = 'Option Value';
 $_['text_percent']           = 'Percentage';
 $_['text_amount']            = 'Fixed Amount';
+$_['text_hidelink']          = 'Show / Hide';
 
 // Column
 $_['column_name']            = 'Product Name';
@@ -23,6 +24,8 @@ $_['column_price']           = 'Price';
 $_['column_quantity']        = 'Quantity';
 $_['column_status']          = 'Status';
 $_['column_action']          = 'Action';
+$_['column_category']        = 'Category';
+$_['column_manufacturer']    = 'Manufacturer';
 
 // Entry
 $_['entry_name']             = 'Product Name:';
@@ -40,7 +43,7 @@ $_['entry_isbn']             = 'ISBN:<br/><span class="help">International Stand
 $_['entry_mpn']              = 'MPN:<br/><span class="help">Manufacturer Part Number</span>';
 $_['entry_location']         = 'Location:';
 $_['entry_shipping']         = 'Requires Shipping:'; 
-$_['entry_manufacturer']     = 'Manufacturer:<br /><span class="help">(Autocomplete)</span>';
+$_['entry_manufacturer']     = 'Manufacturer:';
 $_['entry_date_available']   = 'Date Available:';
 $_['entry_quantity']         = 'Quantity:';
 $_['entry_minimum']          = 'Minimum Quantity:<br/><span class="help">Force a minimum ordered amount</span>';
@@ -67,13 +70,16 @@ $_['entry_option_value']     = 'Option Value:';
 $_['entry_required']         = 'Required:';
 $_['entry_status']           = 'Status:';
 $_['entry_sort_order']       = 'Sort Order:';
-$_['entry_category']         = 'Categories:<br /><span class="help">(Autocomplete)</span>';
+$_['entry_category']         = 'Categories:';
 $_['entry_filter']           = 'Filters:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_download']         = 'Downloads:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_related']          = 'Related Products:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_tag']          	 = 'Product Tags:<br /><span class="help">comma separated</span>';
 $_['entry_reward']           = 'Reward Points:';
 $_['entry_layout']           = 'Layout Override:';
+$_['entry_main_category']    = 'Category:';
+$_['entry_seo_title']        = 'HTML Tag Title:';
+$_['entry_seo_h1']           = 'HTML Tag H1:';
 
 // Error
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

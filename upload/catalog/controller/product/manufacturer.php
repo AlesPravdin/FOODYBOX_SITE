@@ -127,8 +127,15 @@ class ControllerProductManufacturer extends Controller {
 		$manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
 	
 		if ($manufacturer_info) {
-			$this->document->setTitle($manufacturer_info['name']);
+			if ($manufacturer_info['seo_title']) {
+				$this->document->setTitle($manufacturer_info['seo_title']);
+			} else {
+				$this->document->setTitle($manufacturer_info['name']);
+				
+			}
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
+			$this->document->setDescription($manufacturer_info['meta_description']);
+			$this->document->setKeywords($manufacturer_info['meta_keyword']);
 			
 			$url = '';
 			
@@ -153,8 +160,16 @@ class ControllerProductManufacturer extends Controller {
 				'href'      => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url),
       			'separator' => $this->language->get('text_separator')
    			);
+			
+			if ($manufacturer_info['seo_h1']) {
+				$this->data['heading_title'] = $manufacturer_info['seo_h1'];
+			} else {
+				$this->data['heading_title'] = $manufacturer_info['name'];
+			}
+
+			$this->data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
 		
-			$this->data['heading_title'] = $manufacturer_info['name'];
+
 			
 			$this->data['text_empty'] = $this->language->get('text_empty');
 			$this->data['text_quantity'] = $this->language->get('text_quantity');
@@ -187,9 +202,10 @@ class ControllerProductManufacturer extends Controller {
 				'limit'                  => $limit
 			);
 					
-			$product_total = $this->model_catalog_product->getTotalProducts($data);
-								
 			$results = $this->model_catalog_product->getProducts($data);
+			//Вызов метода getFoundProducts должен проводится сразу же после getProducts
+			//только тогда он выдает правильное значения количества товаров
+			$product_total = $this->model_catalog_product->getFoundProducts(); 
 					
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -226,7 +242,7 @@ class ControllerProductManufacturer extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 300) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
@@ -279,13 +295,16 @@ class ControllerProductManufacturer extends Controller {
 					'text'  => $this->language->get('text_rating_desc'),
 					'value' => 'rating-DESC',
 					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . '&sort=rating&order=DESC' . $url)
-				); 
-				
-				$this->data['sorts'][] = array(
-					'text'  => $this->language->get('text_rating_asc'),
-					'value' => 'rating-ASC',
+
+
+			); 
+			
+			$this->data['sorts'][] = array(
+				'text'  => $this->language->get('text_rating_asc'),
+				'value' => 'rating-ASC',
 					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . '&sort=rating&order=ASC' . $url)
-				);
+
+			);
 			}
 			
 			$this->data['sorts'][] = array(
@@ -313,17 +332,17 @@ class ControllerProductManufacturer extends Controller {
 			$this->data['limits'] = array();
 	
 			$limits = array_unique(array($this->config->get('config_catalog_limit'), 25, 50, 75, 100));
-			
+
 			sort($limits);
 	
-			foreach($limits as $limits){
+			foreach($limits as $value){
 				$this->data['limits'][] = array(
-					'text'  => $limits,
-					'value' => $limits,
-					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&limit=' . $limits)
+					'text'  => $value,
+					'value' => $value,
+					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&limit=' . $value)
 				);
 			}
-			
+				
 			$url = '';
 							
 			if (isset($this->request->get['sort'])) {

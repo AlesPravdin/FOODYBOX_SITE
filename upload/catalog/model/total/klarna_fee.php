@@ -51,3 +51,4 @@ class ModelTotalKlarnaFee extends Model {
     }
 }
 ?>
+

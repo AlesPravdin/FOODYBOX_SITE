@@ -27,18 +27,28 @@
             <table class="form">
               <tr>
                 <td><span class="required">*</span> <?php echo $entry_name; ?></td>
-                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][name]" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['name'] : ''; ?>" />
+                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][name]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['name'] : ''; ?>" />
                   <?php if (isset($error_name[$language['language_id']])) { ?>
                   <span class="error"><?php echo $error_name[$language['language_id']]; ?></span>
                   <?php } ?></td>
               </tr>
               <tr>
-                <td><?php echo $entry_meta_description; ?></td>
-                <td><textarea name="product_description[<?php echo $language['language_id']; ?>][meta_description]" cols="40" rows="5"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea></td>
+
+
+                <td><?php echo $entry_seo_h1; ?></td>
+                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][seo_h1]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['seo_h1'] : ''; ?>" /></td>
+              </tr>
+              <tr>
+                <td><?php echo $entry_seo_title; ?></td>
+                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][seo_title]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['seo_title'] : ''; ?>" /></td>
               </tr>
               <tr>
                 <td><?php echo $entry_meta_keyword; ?></td>
-                <td><textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" cols="40" rows="5"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea></td>
+                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?>" /></td>
+              </tr>
+              <tr>
+                <td><?php echo $entry_meta_description; ?></td>
+                <td><textarea name="product_description[<?php echo $language['language_id']; ?>][meta_description]" cols="100" rows="2"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea></td>
               </tr>
               <tr>
                 <td><?php echo $entry_description; ?></td>
@@ -62,26 +72,30 @@
                 <?php } ?></td>
             </tr>
             <tr>
+              <td><a class="hidelink"><?php echo $text_hidelink; ?></a></td>
+			  <td></td>
+            </tr>
+            <tr class="hide">
               <td><?php echo $entry_sku; ?></td>
               <td><input type="text" name="sku" value="<?php echo $sku; ?>" /></td>
             </tr>
-            <tr>
+			<tr class="hide">
               <td><?php echo $entry_upc; ?></td>
               <td><input type="text" name="upc" value="<?php echo $upc; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_ean; ?></td>
               <td><input type="text" name="ean" value="<?php echo $ean; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_jan; ?></td>
               <td><input type="text" name="jan" value="<?php echo $jan; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_isbn; ?></td>
               <td><input type="text" name="isbn" value="<?php echo $isbn; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_mpn; ?></td>
               <td><input type="text" name="mpn" value="<?php echo $mpn; ?>" /></td>
             </tr>
@@ -108,11 +122,11 @@
             </tr>
             <tr>
               <td><?php echo $entry_quantity; ?></td>
-              <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="2" /></td>
+              <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="5" /></td>
             </tr>
             <tr>
               <td><?php echo $entry_minimum; ?></td>
-              <td><input type="text" name="minimum" value="<?php echo $minimum; ?>" size="2" /></td>
+              <td><input type="text" name="minimum" value="<?php echo $minimum; ?>" size="4" /></td>
             </tr>
             <tr>
               <td><?php echo $entry_subtract; ?></td>
@@ -160,7 +174,7 @@
               <td><?php echo $entry_image; ?></td>
               <td><div class="image"><img src="<?php echo $thumb; ?>" alt="" id="thumb" /><br />
                   <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
-                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', 'no_image.jpg');"><?php echo $text_clear; ?></a></div></td>
             </tr>
             <tr>
               <td><?php echo $entry_date_available; ?></td>
@@ -222,23 +236,51 @@
           <table class="form">
             <tr>
               <td><?php echo $entry_manufacturer; ?></td>
-              <td><input type="text" name="manufacturer" value="<?php echo $manufacturer ?>" /><input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" /></td>
+
+
+              <td><select name="manufacturer_id">
+                  <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                  <?php foreach ($manufacturers as $manufacturer) { ?>
+                  <?php if ($manufacturer['manufacturer_id'] == $manufacturer_id) { ?>
+                  <option value="<?php echo $manufacturer['manufacturer_id']; ?>" selected="selected"><?php echo $manufacturer['name']; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $manufacturer['manufacturer_id']; ?>"><?php echo $manufacturer['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_main_category; ?></td>
+              <td><select name="main_category_id">
+                <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                <?php foreach ($categories as $product_categories) { ?>
+                <?php if ($product_categories['category_id'] == $main_category_id) { ?>
+                <option value="<?php echo $product_categories['category_id']; ?>" selected="selected"><?php echo $product_categories['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $product_categories['category_id']; ?>"><?php echo $product_categories['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select></td>
             </tr>
             <tr>
               <td><?php echo $entry_category; ?></td>
-              <td><input type="text" name="category" value="" /></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td><div id="product-category" class="scrollbox">
+              <td><div class="scrollbox">
                   <?php $class = 'odd'; ?>
-                  <?php foreach ($product_categories as $product_category) { ?>
+                  <?php foreach ($categories as $category) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div id="product-category<?php echo $product_category['category_id']; ?>" class="<?php echo $class; ?>"><?php echo $product_category['name']; ?><img src="view/image/delete.png" alt="" />
-                    <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
+
+                  <div class="<?php echo $class; ?>">
+                    <?php if (in_array($category['category_id'], $product_category)) { ?>
+                    <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" checked="checked" />
+                    <?php echo $category['name']; ?>
+                    <?php } else { ?>
+                    <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" />
+                    <?php echo $category['name']; ?>
+                    <?php } ?>
                   </div>
                   <?php } ?>
-                </div></td>
+                </div>
+                <a onclick="$(this).parent().find(':checkbox').attr('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').attr('checked', false);"><?php echo $text_unselect_all; ?></a></td>
             </tr> 
             <tr>
               <td><?php echo $entry_filter; ?></td>
@@ -735,66 +777,6 @@ $.widget('custom.catcomplete', $.ui.autocomplete, {
 	}
 });
 
-// Manufacturer
-$('input[name=\'manufacturer\']').autocomplete({
-	delay: 500,
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
-			dataType: 'json',
-			success: function(json) {		
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.manufacturer_id
-					}
-				}));
-			}
-		});
-	}, 
-	select: function(event, ui) {
-		$('input[name=\'manufacturer\']').attr('value', ui.item.label);
-		$('input[name=\'manufacturer_id\']').attr('value', ui.item.value);
-	
-		return false;
-	},
-	focus: function(event, ui) {
-      return false;
-   }
-});
-
-// Category
-$('input[name=\'category\']').autocomplete({
-	delay: 500,
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
-			dataType: 'json',
-			success: function(json) {		
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.category_id
-					}
-				}));
-			}
-		});
-	}, 
-	select: function(event, ui) {
-		$('#product-category' + ui.item.value).remove();
-		
-		$('#product-category').append('<div id="product-category' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_category[]" value="' + ui.item.value + '" /></div>');
-
-		$('#product-category div:odd').attr('class', 'odd');
-		$('#product-category div:even').attr('class', 'even');
-				
-		return false;
-	},
-	focus: function(event, ui) {
-      return false;
-   }
-});
-
 $('#product-category div img').live('click', function() {
 	$(this).parent().remove();
 	
@@ -1261,4 +1243,13 @@ $('#tabs a').tabs();
 $('#languages a').tabs(); 
 $('#vtab-option a').tabs();
 //--></script> 
+<script type="text/javascript"><!--
+ $(document).ready(function(){
+    $(".hide").hide();
+	$("a.hidelink").click(function () {
+      $(".hide").toggle("slow");
+    });
+  });
+//--></script>
+
 <?php echo $footer; ?>

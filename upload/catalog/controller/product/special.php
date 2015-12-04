@@ -136,7 +136,7 @@ class ControllerProductSpecial extends Controller {
 				'product_id'  => $result['product_id'],
 				'thumb'       => $image,
 				'name'        => $result['name'],
-				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 300) . '..',
 				'price'       => $price,
 				'special'     => $special,
 				'tax'         => $tax,
@@ -219,18 +219,18 @@ class ControllerProductSpecial extends Controller {
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
 		}
-									
+
 		$this->data['limits'] = array();
 
 		$limits = array_unique(array($this->config->get('config_catalog_limit'), 25, 50, 75, 100));
 		
 		sort($limits);
 
-		foreach($limits as $limit){
+		foreach($limits as $value){
 			$this->data['limits'][] = array(
-				'text'  => $limit,
-				'value' => $limit,
-				'href'  => $this->url->link('product/special', $url . '&limit=' . $limit)
+				'text'  => $value,
+				'value' => $value,
+				'href'  => $this->url->link('product/special', $url . '&limit=' . $value)
 			);
 		}
 			

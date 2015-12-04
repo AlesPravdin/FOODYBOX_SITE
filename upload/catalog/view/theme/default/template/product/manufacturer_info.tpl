@@ -20,6 +20,7 @@
         <?php } ?>
       </select>
     </div>
+	<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
     <div class="sort"><?php echo $text_sort; ?>
       <select onchange="location = this.value;">
         <?php foreach ($sorts as $sorts) { ?>
@@ -32,7 +33,6 @@
       </select>
     </div>
   </div>
-  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
   <div class="product-list">
     <?php foreach ($products as $product) { ?>
     <div>
@@ -66,6 +66,9 @@
     <?php } ?>
   </div>
   <div class="pagination"><?php echo $pagination; ?></div>
+  <?php if ($description) { ?>
+  <div class="manufacturer-info"><?php echo $description; ?></div>
+  <?php } ?>
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
@@ -109,6 +112,7 @@ function display(view) {
 			}
 				
 			html += '</div>';
+
 						
 			$(element).html(html);
 		});		

@@ -21,7 +21,8 @@ class ControllerAffiliateRegister extends Controller {
 			$this->affiliate->login($this->request->post['email'], $this->request->post['password']);
 
 	  		$this->redirect($this->url->link('affiliate/success'));
-    	} 
+    	}
+    	$this->initGeoIp();
 
       	$this->data['breadcrumbs'] = array();
 
@@ -353,7 +354,7 @@ class ControllerAffiliateRegister extends Controller {
       		$this->error['lastname'] = $this->language->get('error_lastname');
     	}
 
-    	if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+    	if ((utf8_strlen($this->request->post['email']) > 96) || !$this->ocstore->validate($this->request->post['email'])) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
@@ -438,5 +439,15 @@ class ControllerAffiliateRegister extends Controller {
 		
 		$this->response->setOutput(json_encode($json));
 	}	
+	
+	private function initGeoIp() {
+		$google_api_key = $this->config->get('config_google_api_key');
+		$is_init = (($this->request->server['REQUEST_METHOD'] != 'POST') && $google_api_key);
+		if ($is_init) {
+			$this->document->addScript('http://maps.google.com/maps/api/js?key='.$google_api_key.'&sensor=false&language=ru');
+			$this->document->addScript('catalog/view/javascript/jquery/geoip.ru.js');
+		}
+		return $is_init;
+	}
 }
 ?>

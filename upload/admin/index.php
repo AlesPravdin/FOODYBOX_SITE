@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION', '1.5.5.1');
+define('VERSION', '1.5.5.1.2');
 
 // Configuration
 if (file_exists('config.php')) {
@@ -21,6 +21,7 @@ require_once(DIR_SYSTEM . 'library/currency.php');
 require_once(DIR_SYSTEM . 'library/user.php');
 require_once(DIR_SYSTEM . 'library/weight.php');
 require_once(DIR_SYSTEM . 'library/length.php');
+require_once(DIR_SYSTEM . 'library/ocstore.php');
 
 // Registry
 $registry = new Registry();
@@ -110,6 +111,9 @@ $registry->set('session', $session);
 
 // Language
 $languages = array();
+
+// ocStore features
+$registry->set('ocstore', new ocStore($registry));
 
 $query = $db->query("SELECT * FROM `" . DB_PREFIX . "language`"); 
 
