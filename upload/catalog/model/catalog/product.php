@@ -1,5 +1,22 @@
 <?php
 class ModelCatalogProduct extends Model {
+
+	//Заменим NOW() в SQL-запросах на строку с текущим временем, но с 00 вместо секунд.
+	//Тем самым мы включаем кэширование SQL-запросов на уровне сервера MySQL.
+	//MySQL прекрасно кэширует запросы. Время жизни кэша - 1 минута.
+	private $NOW;
+
+	public function __construct($registry) {
+		$this->NOW = date('Y-m-d H:i') . ':00';
+		parent::__construct($registry);
+	}
+
+	private $FOUND_ROWS;
+
+	public function getFoundProducts() {
+		return $this->FOUND_ROWS;
+	}
+
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}

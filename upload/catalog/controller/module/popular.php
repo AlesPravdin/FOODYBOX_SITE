@@ -15,8 +15,6 @@ class ControllerModulepopular extends Controller {
 		$this->document->addScript('catalog/view/theme/' . $this->config->get('config_template') . '/js/jquery.mousewheel.min.js');
 		$this->document->addStyle('catalog/view/theme/' . $this->config->get('config_template') . '/stylesheet/sliderkit-core.css');
 
-	
-
 		$this->data['products'] = array();
 
 		$products = explode(',', $this->config->get('popular_product'));		

@@ -68,7 +68,7 @@ class ControllerModulecategoryhome extends Controller {
 				
 			$categoryhome[$i]['thumb'] = $this->model_tool_image->resize($image, 120, 120);	
 			$categoryhome[$i]['name'] = $result['name'];
-			$categoryhome[$i]['description'] = utf8_substr(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'),0,140). '..';
+			$categoryhome[$i]['description'] = utf8_substr(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'),0,100). '..';
 
 			
         $i++;

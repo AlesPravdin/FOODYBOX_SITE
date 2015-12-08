@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']       = 'Slayt Gösterisi pollishop';
+$_['heading_title']       = 'Slayt Gösterisi Pollishop';
 
 // Text
 $_['text_module']         = 'Modüller';
