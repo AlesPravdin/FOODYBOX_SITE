@@ -46,6 +46,7 @@ $_['entry_firstname']                = 'First Name:';
 $_['entry_lastname']                 = 'Last Name:';
 $_['entry_telephone']                = 'Telephone:';
 $_['entry_fax']                      = 'Fax:';
+$_['entry_account']                  = 'Учётная запись:';
 $_['entry_company']                  = 'Company:';
 $_['entry_customer_group']           = 'Business Type:';
 $_['entry_company_id']               = 'Company ID:';
