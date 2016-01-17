@@ -1,9 +1,13 @@
 <?php
 class ModelLocalisationZoneDv extends Model {
 	public function getZone($zone_name) {
+
+		error_log("Oracle database not available!", 0);
+
 		foreach($zone_name as $key => $value){
             switch($value){
             	case 'Москва': $send[$key] = '101000'; break;
+            	case 'Минск': $send[$key] = '220095'; break;
             	case 'Санкт-Петербург': $send[$key] = '190000'; break;
             	case 'Алтайский край': $send[$key] = '658000'; break;
             	case 'Амурская область': $send[$key] = '675502'; break;

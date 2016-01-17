@@ -4,22 +4,25 @@ class ModelShippingPochtaros extends Model {
    	private $name = 'pochtaros';
 
     private $methods = array(
-        array('name' => 'ПростаяБандероль', 'key' => 'prostaya_banderol', 'title' => 'Простая бандероль', 'price' => 'Тариф'),
-        array('name' => 'ЗаказнаяБандероль', 'key' => 'zakaznaya_banderol', 'title' => 'Заказная бандероль', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяБандероль', 'key' => 'tsennaya_banderol', 'title' => 'Ценная бандероль', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяБандероль', 'key' => 'tsennaya_banderol_obyavlennaya_stennost', 'title' => 'Ценная бандероль с объявленной ценностью', 'price' => 'Доставка'),
-        array('name' => 'ЦеннаяПосылка', 'key' => 'tsennaya_posylka', 'title' => 'Ценная посылка', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяПосылка', 'key' => 'tsennaya_posylka_obyavlennaya_stennost', 'title' => 'Ценная посылка с объявленной ценностью', 'price' => 'Доставка'),
-        array('name' => 'ЦеннаяАвиаБандероль', 'key' => 'tsennaya_aviabanderol', 'title' => 'Ценная авиабандероль', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяАвиаБандероль', 'key' => 'tsennaya_aviabanderol_obyavlennaya_stennost', 'title' => 'Ценная авиабандероль с объявленной ценностью', 'price' => 'Доставка'),
-        array('name' => 'ЦеннаяАвиаПосылка', 'key' => 'tsennaya_aviaposylka', 'title' => 'Ценная авиапосылка', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяАвиаПосылка', 'key' => 'tsennaya_aviaposylka_obyavlennaya_stennost', 'title' => 'Ценная авиапосылка с объявленной ценностью', 'price' => 'Доставка'),
-        array('name' => 'ЗаказнаяБандероль1Класс', 'key' => 'zakaznaya_banderol_1_class', 'title' => 'Заказная бандероль 1 класс', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяБандероль1Класс', 'key' => 'tsennaya_banderol_1_class', 'title' => 'Ценная бандероль 1 класс', 'price' => 'Тариф'),
-        array('name' => 'ЦеннаяБандероль1Класс', 'key' => 'tsennaya_banderol_1_class_obyavlennaya_stennost', 'title' => 'Ценная бандероль 1 класс с объявленной ценностью', 'price' => 'Доставка')
+        array('name' => 'РџСЂРѕСЃС‚Р°СЏР‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'prostaya_banderol', 'title' => 'РџСЂРѕСЃС‚Р°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р—Р°РєР°Р·РЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'zakaznaya_banderol', 'title' => 'Р—Р°РєР°Р·РЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'tsennaya_banderol', 'title' => 'Р¦РµРЅРЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'tsennaya_banderol_obyavlennaya_stennost', 'title' => 'Р¦РµРЅРЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ СЃ РѕР±СЉСЏРІР»РµРЅРЅРѕР№ С†РµРЅРЅРѕСЃС‚СЊСЋ', 'price' => 'Р”РѕСЃС‚Р°РІРєР°'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРџРѕСЃС‹Р»РєР°', 'key' => 'tsennaya_posylka', 'title' => 'Р¦РµРЅРЅР°СЏ РїРѕСЃС‹Р»РєР°', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРџРѕСЃС‹Р»РєР°', 'key' => 'tsennaya_posylka_obyavlennaya_stennost', 'title' => 'Р¦РµРЅРЅР°СЏ РїРѕСЃС‹Р»РєР° СЃ РѕР±СЉСЏРІР»РµРЅРЅРѕР№ С†РµРЅРЅРѕСЃС‚СЊСЋ', 'price' => 'Р”РѕСЃС‚Р°РІРєР°'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРђРІРёР°Р‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'tsennaya_aviabanderol', 'title' => 'Р¦РµРЅРЅР°СЏ Р°РІРёР°Р±Р°РЅРґРµСЂРѕР»СЊ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРђРІРёР°Р‘Р°РЅРґРµСЂРѕР»СЊ', 'key' => 'tsennaya_aviabanderol_obyavlennaya_stennost', 'title' => 'Р¦РµРЅРЅР°СЏ Р°РІРёР°Р±Р°РЅРґРµСЂРѕР»СЊ СЃ РѕР±СЉСЏРІР»РµРЅРЅРѕР№ С†РµРЅРЅРѕСЃС‚СЊСЋ', 'price' => 'Р”РѕСЃС‚Р°РІРєР°'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРђРІРёР°РџРѕСЃС‹Р»РєР°', 'key' => 'tsennaya_aviaposylka', 'title' => 'Р¦РµРЅРЅР°СЏ Р°РІРёР°РїРѕСЃС‹Р»РєР°', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏРђРІРёР°РџРѕСЃС‹Р»РєР°', 'key' => 'tsennaya_aviaposylka_obyavlennaya_stennost', 'title' => 'Р¦РµРЅРЅР°СЏ Р°РІРёР°РїРѕСЃС‹Р»РєР° СЃ РѕР±СЉСЏРІР»РµРЅРЅРѕР№ С†РµРЅРЅРѕСЃС‚СЊСЋ', 'price' => 'Р”РѕСЃС‚Р°РІРєР°'),
+        array('name' => 'Р—Р°РєР°Р·РЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ1РљР»Р°СЃСЃ', 'key' => 'zakaznaya_banderol_1_class', 'title' => 'Р—Р°РєР°Р·РЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ 1 РєР»Р°СЃСЃ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ1РљР»Р°СЃСЃ', 'key' => 'tsennaya_banderol_1_class', 'title' => 'Р¦РµРЅРЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ 1 РєР»Р°СЃСЃ', 'price' => 'РўР°СЂРёС„'),
+        array('name' => 'Р¦РµРЅРЅР°СЏР‘Р°РЅРґРµСЂРѕР»СЊ1РљР»Р°СЃСЃ', 'key' => 'tsennaya_banderol_1_class_obyavlennaya_stennost', 'title' => 'Р¦РµРЅРЅР°СЏ Р±Р°РЅРґРµСЂРѕР»СЊ 1 РєР»Р°СЃСЃ СЃ РѕР±СЉСЏРІР»РµРЅРЅРѕР№ С†РµРЅРЅРѕСЃС‚СЊСЋ', 'price' => 'Р”РѕСЃС‚Р°РІРєР°')
     );
 
 	public function getQuote($address) {
+
+        error_log("You messed up!", 3, "/var/tmp/my-errors.log");
+
         $this->language->load($this->type . '/' . $this->name);
 
         $method_data = array();
@@ -72,7 +75,10 @@ class ModelShippingPochtaros extends Model {
         }
 
 
+        $status = true;
+
 		if ($status) {
+            /*
             $region = array();
             $region['from'] = $this->config->get('pochtaros_city');
 
@@ -94,6 +100,7 @@ class ModelShippingPochtaros extends Model {
 
 
 
+            //$Request = 'http://api.postcalc.ru/?f='.$from.'&t='.$to.'&w='.$weight.'&v='.$total.'&o=php&e=0&Site='.HTTP_SERVER.'&Email='.$this->config->get('config_email').'&Person='.to_seo($this->config->get('config_owner'));
             $Request = 'http://api.postcalc.ru/?f='.$from.'&t='.$to.'&w='.$weight.'&v='.$total.'&o=php&e=0&Site='.HTTP_SERVER.'&Email='.$this->config->get('config_email').'&Person='.to_seo($this->config->get('config_owner'));
             //echo $Request;
 
@@ -127,19 +134,19 @@ class ModelShippingPochtaros extends Model {
                 }
 
                 if (isset($local['name']) and
-                    /*isset($arrResponse[$local['name']]['Проверено']) and $arrResponse[$local['name']]['Проверено'] == 1 and*/
-                    isset($arrResponse[$local['name']]['Тариф']) and $arrResponse[$local['name']]['Тариф'] > 0 and
-                    isset($arrResponse[$local['name']]['Доставка']) and $arrResponse[$local['name']]['Доставка'] > 0 and
+                    //isset($arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ']) and $arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'] == 1 and
+                    isset($arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅ']) and $arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅ'] > 0 and
+                    isset($arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ']) and $arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'] > 0 and
 
                     ( $this->config->get('pochtaros_fragmentation') or (!$this->config->get('pochtaros_fragmentation') and
-                        isset($arrResponse[$local['name']]['ПредельныйВес']) and $weight <= $arrResponse[$local['name']]['ПредельныйВес']) )
+                        isset($arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ']) and $weight <= $arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ']) )
                 ) {
 
                     $price = floor($arrResponse[$local['name']][$local['price']]);
 
                     $local['title_more'] = iconv('windows-1251','utf-8',$local['title']);
 
-                    if ($local['price'] == 'Доставка') {
+                    if ($local['price'] == 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ') {
                         $local['title_more'] .= ' '.$this->currency->format($this->tax->calculate($total,'', $this->config->get('config_tax')));
                     }
 
@@ -157,7 +164,7 @@ class ModelShippingPochtaros extends Model {
 
                     $text_fragmentation = '';
                     if ($this->config->get('pochtaros_fragmentation')) {
-                        $text_fragmentation = ' ('.$arrResponse[$local['name']]['Количество'].' '.$this->language->get('text_items').')';
+                        $text_fragmentation = ' ('.$arrResponse[$local['name']]['пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'].' '.$this->language->get('text_items').')';
                     }
 
                     if ($cost > 0) {
@@ -171,6 +178,15 @@ class ModelShippingPochtaros extends Model {
                     }
                 }
             }
+            */
+
+            $quote_data["prostaya_banderol"] = array(
+                'code'         => $this->name.'.prostaya_banderol',
+                'title'        => 'Р‘РµР»РїРѕС‡С‚Р°',
+                'cost'         => '0',
+                'tax_class_id' => '',
+                'text'         => 'РџРѕ С‚Р°СЂРёС„Р°Рј'
+            );
 
             if (isset($quote_data) and count($quote_data) > 0) {
                 $method_data = array(
@@ -178,7 +194,7 @@ class ModelShippingPochtaros extends Model {
                         'title'      => $this->config->get('pochtaros_name'),
                         'quote'      => $quote_data,
                         'sort_order' => $this->config->get('pochtaros_sort_order'),
-                        'error'      => $error
+                        'error'      => false
                 );
             }
 		}
