@@ -557,7 +557,8 @@ class ModelCheckoutOrder extends Model {
 				$mail->setFrom($this->config->get('config_email'));
 				$mail->setSender($order_info['store_name']);
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				$mail->setText(html_entity_decode($text, ENT_QUOTES, 'UTF-8'));
+				//$mail->setText(html_entity_decode($text, ENT_QUOTES, 'UTF-8'));
+				$mail->setHtml ($html);
 				$mail->send();
 				
 				// Send to additional alert emails
