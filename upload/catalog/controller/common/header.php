@@ -188,7 +188,21 @@ class ControllerCommonHeader extends Controller {
 			'module/currency',
 			'module/cart'
 		);
-				
+
+		$this->load->model('catalog/information');
+
+		$this->data['informations'] = array();
+
+
+		//My hack
+		foreach ($this->model_catalog_information->getInformations() as $result) {
+			$this->data['informations'][] = array(
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+			);
+		}
+
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/header.tpl';
 		} else {

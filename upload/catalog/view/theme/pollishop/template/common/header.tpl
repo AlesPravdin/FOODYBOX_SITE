@@ -800,6 +800,14 @@ foreach ($categories_1 as $category_1) {
 																                                                                                         // if all sub results have been listed, close the second level
 		$output .= '</li>';																				                                                 // then or otherwise close first list parent
 }
+	 foreach ($informations as $information) {
+
+		 if (strpos($information['href'], 'information_id=5') !== false) {
+			 $output .= '<li class="fullwidth multicolor3"><a href="'.$information['href'].'">'.$information['title'].'</a></li>';
+		 }
+	 }
+
+
 if ($categories_1) {$output .= '</ul>';}																		                                         // then close the first level list table
 echo $output; 																							                                                 // now produce the results
 ?>
