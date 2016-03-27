@@ -135,6 +135,10 @@
     </div>
     <!-------------------------end footer------------------------------------------------------>
 
+    <div id="webpaylogo">
+        <img src="image/data/foodybox/webpay/logo/all.JPG" alt="web pay icons" height="108" width="1000">
+    </div>
+
     <div id="powered">
         <!-------------------------social icons------------------------------------------------------>
         <?php if($this->config->get('pollishop_status')== 1) { ?>

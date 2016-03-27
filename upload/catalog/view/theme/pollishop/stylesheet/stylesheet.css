@@ -2236,6 +2236,8 @@ border: 1px solid #fff;}
 }
 #powered #copy{ float:right; padding:10px 0px 0 20px;}
 
+#footer #webpaylogo{ float:none; width:100%;}
+
 
 .contact-column ul li {list-style-type:none; }
 .contact-column ul { padding-left:0; margin-left:-12px;  }
