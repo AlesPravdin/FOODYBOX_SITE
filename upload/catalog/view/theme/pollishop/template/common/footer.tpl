@@ -136,7 +136,7 @@
     <!-------------------------end footer------------------------------------------------------>
 
     <div id="webpaylogo">
-        <img src="image/data/foodybox/webpay/logo/all.JPG" alt="web pay icons" height="108" width="1000">
+        <img src="image/data/foodybox/webpay/logo/alllogos.png" alt="web pay icons" height="64" width="1000">
     </div>
 
     <div id="powered">
