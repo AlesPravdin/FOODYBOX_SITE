@@ -1,7 +1,7 @@
 <?php
 class ModelShippingPochtaros extends Model {
     private $type = 'shipping';
-   	private $name = 'pochtaros';
+    private $name = 'pochtaros';
 
     private $methods = array(
         array('name' => 'ПростаяБандероль', 'key' => 'prostaya_banderol', 'title' => 'Простая бандероль', 'price' => 'Тариф'),
@@ -19,7 +19,7 @@ class ModelShippingPochtaros extends Model {
         array('name' => 'ЦеннаяБандероль1Класс', 'key' => 'tsennaya_banderol_1_class_obyavlennaya_stennost', 'title' => 'Ценная бандероль 1 класс с объявленной ценностью', 'price' => 'Доставка')
     );
 
-	public function getQuote($address) {
+    public function getQuote($address) {
 
         error_log("You messed up!", 3, "/var/tmp/my-errors.log");
 
@@ -77,7 +77,7 @@ class ModelShippingPochtaros extends Model {
 
         $status = true;
 
-		if ($status) {
+        if ($status) {
             /*
             $region = array();
             $region['from'] = $this->config->get('pochtaros_city');
@@ -197,9 +197,9 @@ class ModelShippingPochtaros extends Model {
                         'error'      => false
                 );
             }
-		}
+        }
 
-		return $method_data;
-	}
+        return $method_data;
+    }
 }
 ?>
