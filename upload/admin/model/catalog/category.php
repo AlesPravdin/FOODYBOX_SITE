@@ -43,10 +43,8 @@ class ModelCatalogCategory extends Model
 
         // Set which layout to use with this category
         if (isset($data['category_layout'])) {
-            foreach ($data['category_layout'] as $store_id => $layout) {
-                if ($layout['layout_id']) {
-                    $this->db->query("INSERT INTO " . DB_PREFIX . "category_to_layout SET category_id = '" . (int)$category_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout['layout_id'] . "'");
-                }
+            foreach ($data['category_description'] as $language_id => $value) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "' , seo_title = '" . $this->db->escape($value['seo_title']) . "', seo_h1 = '" . $this->db->escape($value['seo_h1']) . "'");
             }
         }
 
@@ -256,7 +254,9 @@ class ModelCatalogCategory extends Model
                 'name' => $result['name'],
                 'meta_keyword' => $result['meta_keyword'],
                 'meta_description' => $result['meta_description'],
-                'description' => $result['description']
+                'description' => $result['description'],
+                'seo_h1' => $result['seo_h1'],
+                'seo_title' => $result['seo_title']
             );
         }
 
