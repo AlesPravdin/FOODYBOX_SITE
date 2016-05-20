@@ -35,27 +35,27 @@
 
 <?php } ?>
 
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/cloud-zoom.1.0.2.min.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/cloud-zoom.1.0.2.min.js"></script>
 
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/custom.js"></script>
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/newselect.js"></script>
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/menu_script.js"></script>  
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/jquery.tinycarousel.min.js"></script> 
-<script type="text/javascript" src="catalog/view/theme/pollishop/js/jquery.mousewheel.min.js"></script>  
-<script language="javascript" src="catalog/view/theme/pollishop/js/jquery.tweet.js" type="text/javascript"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/custom.js"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/newselect.js"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/menu_script.js"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/jquery.tinycarousel.min.js"></script>
+<script type="text/javascript" async src="catalog/view/theme/pollishop/js/jquery.mousewheel.min.js"></script>
+<script language="javascript" async src="catalog/view/theme/pollishop/js/jquery.tweet.js" type="text/javascript"></script>
 
 
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/jquery.jcarousel.min.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
-<script type="text/javascript" src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" media="screen" />
-<script type="text/javascript" src="catalog/view/javascript/jquery/tabs.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/jquery/tabs.js"></script>
+<script type="text/javascript" async src="catalog/view/javascript/common.js"></script>
 <?php foreach ($scripts as $script) { ?>
-<script type="text/javascript" src="<?php echo $script; ?>"></script>
+<script type="text/javascript" async src="<?php echo $script; ?>"></script>
 <?php } ?>
 
 
@@ -520,6 +520,15 @@ $(function(){
 
 <body>
 
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5NZ7D6"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5NZ7D6');</script>
+<!-- End Google Tag Manager -->
 
 
 <div id="container">
