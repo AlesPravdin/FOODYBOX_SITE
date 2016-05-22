@@ -21,7 +21,45 @@
 
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/pollishop/stylesheet/stylesheet.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/pollishop/stylesheet/responsive.css" />
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/pollishop/stylesheet/cloud-zoom.css" />
+<!-- <link rel="stylesheet" type="text/css" href="catalog/view/theme/pollishop/stylesheet/cloud-zoom.css" /> -->
+	<style media="screen" type="text/css">
+
+		/* This is the moving lens square underneath the mouse pointer. */
+		.cloud-zoom-lens {
+			margin:-4px;	/* Set this to minus the border thickness. */
+			background-color:#fff;
+			cursor:move;
+		}
+
+		/* This is for the title text. */
+		.cloud-zoom-title {
+			font-family:Arial, Helvetica, sans-serif;
+			position:absolute !important;
+			background-color:#000;
+			color:#fff;
+			padding:3px;
+			width:100%;
+			text-align:center;
+			font-weight:bold;
+			font-size:10px;
+			top:0px;
+		}
+
+		/* This is the zoom window. */
+		.cloud-zoom-big {
+			overflow:hidden;
+		}
+
+		/* This is the loading message. */
+		.cloud-zoom-loading {
+			color:white;
+			background:#222;
+			padding:3px;
+			border:1px solid #000;
+		}
+
+
+	</style>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/pollishop/stylesheet/carousel.css" />
 
 <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
