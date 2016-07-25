@@ -1,4 +1,5 @@
 User-agent: *
+Sitemap: http://foodybox.by/index.php?route=feed/google_sitemap
 Disallow: /*route=account/
 Disallow: /*route=affiliate/
 Disallow: /*route=checkout/
@@ -24,6 +25,7 @@ Disallow: /*?tracking=
 Disallow: /*&tracking=
 
 User-agent: Yandex
+Sitemap: http://foodybox.by/index.php?route=feed/google_sitemap
 Disallow: /*route=account/
 Disallow: /*route=affiliate/
 Disallow: /*route=checkout/
@@ -46,3 +48,7 @@ Disallow: /*&filter_sub_category=
 Disallow: /*?filter_description=
 Disallow: /*&filter_description=
 Clean-param: tracking
+
+# будет использована роботами Google
+User-Agent: Googlebot
+Sitemap: http://foodybox.by/index.php?route=feed/google_sitemap

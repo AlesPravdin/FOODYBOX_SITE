@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="cp1251"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+		<yml_catalog date="2016-05-28 21:52">
+		<shop>
+			<name>foodybox.by</name>
+			<company>foodybox.by</company>
+			<url>http://foodybox.by/</url>
+<categories>
+		       <category id="1">Товары в наличии</category>
+		</categories>
+		
+		<offers>
+		</offers>
+</shop>
+</yml_catalog>
