@@ -1,0 +1,14 @@
+---------- Date: 2016-05-25 19:14:44 ~ IP : 86.57.144.254 ----------
+REQUEST URI : /admin/index.php?route=catalog/product/update&amp;token=984f21822bed92ed397e6e66925716a6&amp;product_id=164&amp;filter_category_id=62&amp;sort=pd.name&amp;order=ASC
+MOD DETAILS:
+   modFile   : /home/user1209495/www/foodybox.by/vqmod/xml/video_in_product_oc1.5.xml
+   id        : Video_in_product_1.5
+   version   : 1.0
+   vqmver    : 2.3.2
+   author    : mazein
+
+File Name    : admin/view/template/catalog/product_form.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <td colspan="2"></td>
+----------------------------------------------------------------------
+
+

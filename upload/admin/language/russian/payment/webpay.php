@@ -28,7 +28,7 @@ $_['entry_geo_zone']        		= 'Географическая зона:';
 $_['entry_status']          		= 'Статус:';
 $_['entry_sort_order']      		= 'Порядок сортировки:';
 $_['entry_soap_lib']				= 'SOAP библиотека (<a target="_blank" href="http://ru.php.net/manual/en/book.soap.php">подробнее</a>):';
-$_['entry_byr_en']				= 'Наличие валюты BYR:';
+$_['entry_byn_en']				= 'Наличие валюты BYN:';
 $_['entry_test']				= 'Режим:';
 
 // Error

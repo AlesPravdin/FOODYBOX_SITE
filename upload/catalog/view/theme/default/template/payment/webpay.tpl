@@ -7,7 +7,7 @@
 	<input type="hidden" name="wsb_store" value="<?php echo $shop_name; ?>" >  
 	<input type="hidden" name="wsb_order_num" value="<?php echo $order_id; ?>" >  
 
-	<input type="hidden" name="wsb_currency_id" value="BYR" >  
+	<input type="hidden" name="wsb_currency_id" value="BYN" >
 	<input type="hidden" name="wsb_seed" value="<?php echo $seed; ?>">  
 	<input type="hidden" name="wsb_signature" value="<?php echo $hash; ?>">  
 
@@ -39,7 +39,7 @@
 		<td align=right><?php echo $total_text; ?></td>
 		<td width=10></td>  
 		<td width=10><input type="text" name="wsb_total" value="<?php echo $summ; ?>" ></td>
-		<td width=10>BYR</td>
+		<td width=10>BYN</td>
 	</tr>
 	</table>
 

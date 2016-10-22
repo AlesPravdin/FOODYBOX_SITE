@@ -37,8 +37,8 @@ class ControllerPaymentWebPay extends Controller {
 		$this->data['shop_name'] = $this->config->get('webpay_shop_name');
 		$this->data['order_id'] = $this->session->data['order_id'];
 
-		$this->data['currency_id'] = 'BYR';        
-		$this->data['summ'] = $this->ConvertToByr($order_info['total'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
+		$this->data['currency_id'] = 'BYN';
+		$this->data['summ'] = $this->ConvertToByn($order_info['total'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
 		$this->data['com'] = html_entity_decode($this->data['description'], ENT_QUOTES, 'UTF-8');
 		$this->data['lifetime'] = $this->config->get('webpay_lifetime');
 
@@ -51,7 +51,7 @@ class ControllerPaymentWebPay extends Controller {
 
 		if ($this->cart->hasShipping())
 		{
-			$this->data['wsb_shipping_price'] = $this->ConvertToByr($this->session->data['shipping_method']['cost'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
+			$this->data['wsb_shipping_price'] = $this->ConvertToByn($this->session->data['shipping_method']['cost'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
 			$this->data['wsb_shipping_name'] = $this->session->data['shipping_method']['title'];
 		}
 		else
@@ -97,7 +97,7 @@ class ControllerPaymentWebPay extends Controller {
 
 		 }
 
-		$this->data['wsb_discount_price'] = abs($this->ConvertToByr($this->data['wsb_discount_price'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']));
+		$this->data['wsb_discount_price'] = abs($this->ConvertToByn($this->data['wsb_discount_price'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']));
 
 
 	
@@ -122,16 +122,16 @@ class ControllerPaymentWebPay extends Controller {
 			$this->data['wsb_invoice_item_quantity'] = $this->data['wsb_invoice_item_quantity'] . "<input type='hidden' name='wsb_invoice_item_quantity[" . $i . "]' value='" . $product['quantity'] . "'>" . "\r\n";
 
 
-			$byr_price = $this->ConvertToByr($product['price'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']); 
-			$this->data['wsb_invoice_item_price'] = $this->data['wsb_invoice_item_price'] . "<input type='hidden' name='wsb_invoice_item_price[" . $i . "]' value='" . $byr_price . "'>" . "\r\n";
+			$byn_price = $this->ConvertToByn($product['price'],$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
+			$this->data['wsb_invoice_item_price'] = $this->data['wsb_invoice_item_price'] . "<input type='hidden' name='wsb_invoice_item_price[" . $i . "]' value='" . $byn_price . "'>" . "\r\n";
 
 
-			$sub_total = $sub_total + $product['quantity']*$byr_price;
+			$sub_total = $sub_total + $product['quantity']*$byn_price;
 
 			$i++;
 		} 
 
-		//$sub_total = $this->ConvertToByr($this->cart->getSubTotal(),$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
+		//$sub_total = $this->ConvertToByn($this->cart->getSubTotal(),$order_info['currency_code'],$this->data['currency_id'],$order_info['currency_value']);
 
 
 		$this->data['wsb_tax'] =  $this->data['summ'] - $this->data['wsb_shipping_price'] - $sub_total + $this->data['wsb_discount_price'];
@@ -164,7 +164,7 @@ class ControllerPaymentWebPay extends Controller {
 		return $wsb_signature;
 	}
 
-	private function ConvertToByr ($price,$currency_code,$currency_id,$currency_value) {
+	private function ConvertToByn ($price, $currency_code, $currency_id, $currency_value) {
 		$_sub_total = $this->currency->convert($price, $currency_code, $currency_id);
 		$sub_total = $this->currency->format($_sub_total, $currency_id, $currency_value, FALSE);
 

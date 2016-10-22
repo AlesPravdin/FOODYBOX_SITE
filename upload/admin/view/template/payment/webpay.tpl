@@ -19,11 +19,11 @@
     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
       <table class="form">
         <tr>
-          <td><?php echo $entry_byr_en; ?></td>
-          <td><?php if($flag_byr) { ?> <span style="color: green;"><?php echo $text_enabled; ?></span> <?php } else {?> <span style="color: red;"><?php echo $text_disabled; ?></span><?php }?></td>
+          <td><?php echo $entry_byn_en; ?></td>
+          <td><?php if($flag_byn) { ?> <span style="color: green;"><?php echo $text_enabled; ?></span> <?php } else {?> <span style="color: red;"><?php echo $text_disabled; ?></span><?php }?></td>
         </tr>
 
-<?php if(!$flag_byr) { ?>
+<?php if(!$flag_byn) { ?>
       </table>
     </form>
   </div>

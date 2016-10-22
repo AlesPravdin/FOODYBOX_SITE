@@ -27,7 +27,7 @@ class ControllerPaymentWebPay extends Controller {
 		$this->data['entry_soap_lib'] = $this->language->get('entry_soap_lib');
 		$this->data['entry_shop_key'] = $this->language->get('entry_shop_key');
 		$this->data['entry_shop_mes'] = $this->language->get('entry_shop_mes');
-$this->data['entry_byr_en'] = $this->language->get('entry_byr_en');
+$this->data['entry_byn_en'] = $this->language->get('entry_byn_en');
 
 		$this->data['entry_result_url'] = $this->language->get('entry_result_url');
 		$this->data['entry_success_url'] = $this->language->get('entry_success_url');
@@ -176,11 +176,11 @@ $this->data['text_test_no'] = $this->language->get('text_test_no');
 		$this->load->model('localisation/currency');
 
 		$results = $this->model_localisation_currency->getCurrencies();	
-		$this->data['flag_byr'] = 0;
+		$this->data['flag_byn'] = 0;
 
 		foreach ($results as $result) {
-			if ($result['code'] == 'BYR') {
-				$this->data['flag_byr'] = 1;
+			if ($result['code'] == 'BYN') {
+				$this->data['flag_byn'] = 1;
    			
 			}
 		}

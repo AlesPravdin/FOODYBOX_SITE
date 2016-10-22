@@ -27,7 +27,7 @@ $_['entry_geo_zone']        		= 'Geographical Zone:';
 $_['entry_status']          		= 'Status:';
 $_['entry_sort_order']      		= 'Sort Order:';
 $_['entry_soap_lib']			= 'SOAP library (<a target="_blank" href="http://ru.php.net/manual/en/book.soap.php">more</a>):';
-$_['entry_byr_en']			= 'BYR:';
+$_['entry_byn_en']			= 'BYN:';
 
 $_['entry_test']				= 'Mode:';
 
