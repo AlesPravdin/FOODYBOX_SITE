@@ -168,7 +168,7 @@ class ControllerPaymentWebPay extends Controller {
 		$_sub_total = $this->currency->convert($price, $currency_code, $currency_id);
 		$sub_total = $this->currency->format($_sub_total, $currency_id, $currency_value, FALSE);
 
-		return (int)$sub_total;
+		return $sub_total;
 	}
 
 	public function confirm() {
