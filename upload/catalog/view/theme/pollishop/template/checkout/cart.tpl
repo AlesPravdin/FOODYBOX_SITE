@@ -192,6 +192,7 @@
   </div>
   <div class="buttons">
     <div class="right"><a href="<?php echo $checkout; ?>" class="button"><?php echo $button_checkout; ?></a></div>
+    <div class="right"><a class="button" onclick="$('#cart').load('index.php?route=checkout/cart&remove_all'); window.location.assign('index.php?route=checkout/cart&remove_all');"><?php echo $button_clear; ?></a>&emsp;</div>
     <div class="center"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_shopping; ?></a></div>
   </div>
   <?php echo $content_bottom; ?></div>

@@ -43,7 +43,12 @@
         <?php } ?>
       </table>
     </div>
-    <div class="checkout"><a href="<?php echo $cart; ?>"><?php echo $text_cart; ?></a> | <a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></div>
+    <div class="checkout">
+      <a href="<?php echo $cart; ?>"><?php echo $text_cart; ?></a> |
+      <a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a> |
+      <a onclick="$('#cart').load('index.php?route=checkout/cart&remove_all'); window.location.assign('index.php?route=checkout/cart&remove_all');">Очистить&nbsp;корзину</a>
+    </div>
+
     <?php } else { ?>
     <div class="empty"><?php echo $text_empty; ?></div>
     <?php } ?>

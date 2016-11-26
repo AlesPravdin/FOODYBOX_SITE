@@ -5,6 +5,10 @@ class ControllerCheckoutCart extends Controller {
 	public function index() {
 		$this->language->load('checkout/cart');
 
+        if (isset($this->request->get['remove_all'])) {
+            $this->cart->clear();
+        }
+
 		if (!isset($this->session->data['vouchers'])) {
 			$this->session->data['vouchers'] = array();
 		}
@@ -144,6 +148,7 @@ class ControllerCheckoutCart extends Controller {
 			$this->data['button_shipping'] = $this->language->get('button_shipping');			
       		$this->data['button_shopping'] = $this->language->get('button_shopping');
       		$this->data['button_checkout'] = $this->language->get('button_checkout');
+            $this->data['button_clear'] = $this->language->get('button_clear');
 			
 			if (isset($this->error['warning'])) {
 				$this->data['error_warning'] = $this->error['warning'];
