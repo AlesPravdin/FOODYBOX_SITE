@@ -11,7 +11,7 @@ BEGIN
 	LEFT JOIN `oc_order` O ON (P.order_id = O.order_id)
 	LEFT JOIN `oc_order_option` OPT ON (P.order_product_id =  OPT.order_product_id)
 	WHERE (O.order_status_id > '0') AND (O.date_added BETWEEN DATE_SUB(NOW(), INTERVAL days DAY) AND NOW())
-	GROUP BY P.model, color
+	GROUP BY P.product_id, color
 	ORDER BY name;
 
 END $$
