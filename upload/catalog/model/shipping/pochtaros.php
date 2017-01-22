@@ -182,7 +182,7 @@ class ModelShippingPochtaros extends Model {
 
             $quote_data["prostaya_banderol"] = array(
                 'code'         => $this->name.'.prostaya_banderol',
-                'title'        => 'Белпочта',
+                'title'        => 'Белпочта (Доставка оплачивается отдельно)',
                 'cost'         => '0',
                 'tax_class_id' => '',
                 'text'         => 'По тарифам'

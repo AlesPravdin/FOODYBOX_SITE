@@ -148,8 +148,43 @@ $text_information = $this->language->get('text_information');
 
         <?php } ?>
 
-        <span><?php echo $text_stock; ?></span> <?php echo $stock; ?></div>
-        
+        <!-- <span><?php echo $text_stock; ?></span> <?php echo $stock; ?><br /> -->
+
+        <?php if ($length>0) { ?><span><?php echo $text_length; ?></span> <?php echo round($length, 2); ?>
+        <?php echo " мм<br/>"; ?>
+        <?php if ($length_class_id==1) {?>
+        <?php } ?><?php } ?>
+        <?php if ($length) { ?>
+        <?php } ?>
+
+        <?php if ($width>0) { ?><span><?php echo $text_width; ?></span> <?php echo round($width, 2); ?>
+        <?php echo " мм<br/>"; ?>
+        <?php if ($width_class_id==1) {?>
+        <?php } ?><?php } ?>
+        <?php if ($width) { ?>
+        <?php } ?>
+
+        <?php if ($height>0) { ?><span><?php echo $text_height; ?></span> <?php echo round($height, 2); ?>
+        <?php echo " мм<br/>"; ?>
+        <?php if ($height_class_id==1) {?>
+        <?php } ?><?php } ?>
+        <?php if ($height) { ?>
+        <?php } ?>
+
+
+
+
+        <?php if ($weight>0) { ?><span><?php echo $text_weight; ?></span> <?php echo round($weight, 2); ?>
+        <?php if ($weight) { ?>
+        <?php } ?>
+        <?php if ($weight_class_id==2) {?>
+        <?php echo " гр<br />"; ?>
+        <?php } ?>
+        <?php if ($weight_class_id==1) {?>
+        <?php echo ' кг'; ?>
+        <?php } ?><?php } ?>
+      </div>
+
 
 
    

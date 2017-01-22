@@ -4,6 +4,11 @@ $_['text_search']       = 'Поиск';
 $_['text_brand']        = 'Бренд';
 $_['text_manufacturer'] = 'Производитель:';
 $_['text_model']        = 'Модель:';
+$_['text_weight']       = 'Вес:';
+$_['text_length']       = 'Длина:';
+$_['text_width']        = 'Ширина:';
+$_['text_height']       = 'Высота:';
+
 $_['text_reward']       = 'Бонусные баллы:';
 $_['text_points']       = 'Цена в бонусных баллах:';
 $_['text_stock']        = 'Наличие:';

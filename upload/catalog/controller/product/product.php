@@ -240,9 +240,22 @@ class ControllerProductProduct extends Controller {
 			    $this->data['heading_title'] = $product_info['name'];
 			}
 
+            $this->data['length'] = $product_info['length'];
+            $this->data['length_class_id'] = $product_info['length_class_id'];
+            $this->data['width'] = $product_info['width'];
+            $this->data['width_class_id'] = $product_info['weight_class_id'];
+            $this->data['height'] = $product_info['height'];
+            $this->data['height_class_id'] = $product_info['weight_class_id'];
+            $this->data['weight'] = $product_info['weight'];
+            $this->data['weight_class_id'] = $product_info['weight_class_id'];
+
 			$this->data['text_select'] = $this->language->get('text_select');
 			$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$this->data['text_model'] = $this->language->get('text_model');
+            $this->data['text_weight'] = $this->language->get('text_weight');
+            $this->data['text_length'] = $this->language->get('text_length');
+            $this->data['text_width'] = $this->language->get('text_width');
+            $this->data['text_height'] = $this->language->get('text_height');
 			$this->data['text_reward'] = $this->language->get('text_reward');
 			$this->data['text_points'] = $this->language->get('text_points');	
 			$this->data['text_discount'] = $this->language->get('text_discount');
@@ -365,6 +378,7 @@ class ControllerProductProduct extends Controller {
 							}
 							
 							$option_value_data[] = array(
+                                'weight'                  => $option_value['weight'],
 								'product_option_value_id' => $option_value['product_option_value_id'],
 								'option_value_id'         => $option_value['option_value_id'],
 								'name'                    => $option_value['name'],
